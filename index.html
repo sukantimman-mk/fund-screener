@@ -4727,11 +4727,15 @@ async function sendAIMessage() {
 [ข้อมูลกองทุนที่คัดกรองจากฐานข้อมูลจริง 3,807 กองทุน]:
 ${JSON.stringify(compactCandidates, null, 1)}`;
 
-    // 3. Call Gemini API
-    const endpoints = [
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`
+    // 3. Call Gemini API with modern model fallback cascade
+    const candidateModels = [
+      'gemini-2.5-flash',
+      'gemini-2.5-pro',
+      'gemini-2.0-flash',
+      'gemini-1.5-flash-latest',
+      'gemini-1.5-pro-latest',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro'
     ];
 
     const payload = {
@@ -4752,7 +4756,8 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
     let responseText = null;
     let lastError = null;
 
-    for (const url of endpoints) {
+    for (const model of candidateModels) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
       try {
         const res = await fetch(url, {
           method: 'POST',
@@ -4762,6 +4767,7 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
           },
           body: JSON.stringify(payload)
         });
+
         if (res.ok) {
           const data = await res.json();
           if (data.candidates && data.candidates[0] && data.candidates[0].content) {
@@ -4770,15 +4776,27 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
           }
         } else {
           const errData = await res.json().catch(() => ({}));
-          lastError = errData.error ? errData.error.message : `HTTP ${res.status}`;
+          const errMsg = errData.error ? errData.error.message : `HTTP ${res.status}`;
+          
+          if (res.status === 401) {
+            throw new Error(`API Key ไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึง (${errMsg}) กรุณาตรวจสอบหรือสร้าง API Key ใหม่ที่ aistudio.google.com`);
+          }
+          if (res.status === 429) {
+            throw new Error(`ใช้งานเกินโควต้าที่ระบบอนุญาต (HTTP 429 Rate Limit: ${errMsg})`);
+          }
+          
+          lastError = errMsg;
         }
       } catch (err) {
+        if (err.message && (err.message.includes('401') || err.message.includes('429'))) {
+          throw err;
+        }
         lastError = err.message;
       }
     }
 
     if (!responseText) {
-      throw new Error(lastError || 'ไม่สามารถติดต่อ Gemini API ได้ กรุณาตรวจสอบ API Key');
+      throw new Error(lastError || 'ไม่สามารถติดต่อ Gemini API ได้ กรุณาตรวจสอบการเปิดใช้งาน API Key');
     }
 
     // Format Markdown to HTML
