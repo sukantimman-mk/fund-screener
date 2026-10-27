@@ -4727,15 +4727,15 @@ async function sendAIMessage() {
 [ข้อมูลกองทุนที่คัดกรองจากฐานข้อมูลจริง 3,807 กองทุน]:
 ${JSON.stringify(compactCandidates, null, 1)}`;
 
-    // 3. Call Gemini API with modern model fallback cascade
+    // 3. Call Gemini API with Gemini 3.8 Flash cascade
     const candidateModels = [
+      'gemini-3.8-flash',
+      'gemini-3.5-flash',
+      'gemini-3.8-pro',
       'gemini-2.5-flash',
       'gemini-2.5-pro',
       'gemini-2.0-flash',
-      'gemini-1.5-flash-latest',
-      'gemini-1.5-pro-latest',
-      'gemini-1.5-flash',
-      'gemini-1.5-pro'
+      'gemini-1.5-flash-latest'
     ];
 
     const payload = {
@@ -4746,11 +4746,7 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
             { text: `${systemPrompt}\n\nคำถามของผู้ใช้: "${userText}"` }
           ]
         }
-      ],
-      generationConfig: {
-        temperature: 0.2,
-        maxOutputTokens: 1200
-      }
+      ]
     };
 
     let responseText = null;
@@ -4771,8 +4767,9 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
         if (res.ok) {
           const data = await res.json();
           if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-            responseText = data.candidates[0].content.parts.map(p => p.text).join('\n');
-            break;
+            const parts = data.candidates[0].content.parts || [];
+            responseText = parts.map(p => p.text || '').filter(Boolean).join('\n');
+            if (responseText) break;
           }
         } else {
           const errData = await res.json().catch(() => ({}));
@@ -4785,7 +4782,7 @@ ${JSON.stringify(compactCandidates, null, 1)}`;
             throw new Error(`ใช้งานเกินโควต้าที่ระบบอนุญาต (HTTP 429 Rate Limit: ${errMsg})`);
           }
           
-          lastError = errMsg;
+          lastError = `[${model}] ${errMsg}`;
         }
       } catch (err) {
         if (err.message && (err.message.includes('401') || err.message.includes('429'))) {
@@ -4895,7 +4892,7 @@ function openFundModalById(fundId) {
     <div class="ai-drawer-title">
       <span>🤖 AI Fund Advisor</span>
       <span class="pulse-dot" style="background:#22c55e;"></span>
-      <span style="font-size:10.5px;color:var(--text3);font-weight:normal;">Gemini Grounded</span>
+      <span style="font-size:10.5px;color:var(--text3);font-weight:normal;">Gemini 3.8 Flash (Grounded)</span>
     </div>
     <div class="ai-drawer-actions">
       <button class="ai-icon-btn" onclick="openKeyModal()" title="ตั้งค่า Gemini API Key">🔑 API Key</button>
