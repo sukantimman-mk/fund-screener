@@ -1,0 +1,24 @@
+# Security & Secrets (CRITICAL: NEVER COMMIT TO GITHUB)
+.env
+.env.*
+*.env
+*.key
+*token*
+*secret*
+credentials.*
+config.local.*
+
+# Large backup HTML files (keep repository lightweight)
+*.backup*.html
+index.backup*.html
+
+# Python cache & temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+scratch/
+.system_generated/
+
+# OS metadata
+Thumbs.db
+.DS_Store
