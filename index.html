@@ -4547,14 +4547,14 @@ function openKeyModal() {
   const input = document.getElementById('gemini-key-input');
   if (modal && input) {
     input.value = getSavedApiKey() || '';
-    modal.classList.add('visible');
+    modal.classList.add('open');
     input.focus();
   }
 }
 
 function closeKeyModalDirect() {
   const modal = document.getElementById('key-modal-overlay');
-  if (modal) modal.classList.remove('visible');
+  if (modal) modal.classList.remove('open');
 }
 
 function closeKeyModal(e) {
