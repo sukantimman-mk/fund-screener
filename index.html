@@ -1941,7 +1941,11 @@
     color: #38bdf8;
     border: 1px solid rgba(56,189,248,0.3);
   }
-
+  .dr-type-badge.drx {
+    background: rgba(34,197,94,0.15);
+    color: #4ade80;
+    border: 1px solid rgba(74,222,128,0.3);
+  }
   .dr-symbol-link {
     font-weight: 700;
     color: var(--accent2);
@@ -2262,7 +2266,7 @@
         <span class="dr-search-icon">🔍</span>
         <input type="text" id="dr-search-input" placeholder="ค้นหา DR, หุ้นแม่ เช่น NVDA, Apple, QQQ, VN30, ASML, Tencent, BYD..." oninput="onDRFilterChange()">
       </div>
-      <button class="dr-action-btn primary" onclick="openDRCalcModal()" title="คำนวณราคายุติธรรมและอัตราส่วน DR ต่อหุ้นแม่">
+      <button class="dr-action-btn primary" onclick="openDRCalcModal()" title="คำนวณราคายุติธรรมและอัตราแปลงสภาพ DR ต่อหุ้นแม่">
         🧮 เครื่องคำนวณราคายุติธรรม (Fair Price)
       </button>
       <button class="dr-action-btn" onclick="openDRGuideModal()" title="อ่านคู่มือการลงทุน DR และสิทธิประโยชน์ทางภาษี">
@@ -2329,7 +2333,7 @@
             <th onclick="sortDRTable('country')">ประเทศ / ตลาด ↕</th>
             <th onclick="sortDRTable('asset_class')">ประเภทสินทรัพย์ ↕</th>
             <th onclick="sortDRTable('sector')">กลุ่มธุรกิจ / นโยบาย ↕</th>
-            <th onclick="sortDRTable('ratio_num')">อัตราส่วนแปลงสภาพ (อัตราทด) ↕</th>
+            <th onclick="sortDRTable('ratio_num')">อัตราแปลงสภาพ (หุ้นแม่ : DR) ↕</th>
             <th onclick="sortDRTable('issuer')">ผู้ออกตราสาร ↕</th>
             <th>เวลาซื้อขาย</th>
             <th>สกุลเงินแม่</th>
@@ -2343,7 +2347,7 @@
     </div>
     <div style="padding:12px 18px;background:var(--surface2);border-top:1px solid var(--border);font-size:12px;color:var(--text3);display:flex;justify-content:space-between;align-items:center;">
       <span>แสดง DR จำนวน <b id="dr-shown-footer-count">0</b> ตัว</span>
-      <span>💡 คลิกที่ปุ่ม <b>"🧮 คำนวณ"</b> ที่แต่ละแถวเพื่อเปิดเครื่องคำนวณราคายุติธรรมทันที</span>
+      <span>💡 สัดส่วน <b>1 : N</b> หมายถึง หุ้นต่างประเทศ 1 หุ้น ออกเป็น N หน่วย DR (คลิกปุ่ม <b>"🧮 คำนวณ"</b> เพื่อจำลองราคายุติธรรม)</span>
     </div>
   </div>
 
@@ -2359,7 +2363,7 @@
       <button class="ai-icon-btn" onclick="closeDRCalcModal()" style="font-size:16px;">✕</button>
     </div>
     <p style="font-size:12.5px;color:var(--text2);margin:0 0 16px;line-height:1.5;">
-      คำนวณราคาประมาณการของ DR ในตลาดหุ้นไทย (บาท) โดยอ้างอิงจากราคาหุ้นแม่ต่างประเทศ อัตราแลกเปลี่ยน และอัตราส่วนแปลงสภาพ (Conversion Ratio)
+      คำนวณราคาประมาณการของ DR ในตลาดหุ้นไทย (บาท) โดยอ้างอิงจากราคาหุ้นแม่ต่างประเทศ อัตราแลกเปลี่ยน และอัตราแปลงสภาพ (Conversion Ratio)
     </p>
 
     <div class="calc-field" style="margin-bottom:12px;">
@@ -2372,7 +2376,7 @@
     <div class="calc-grid">
       <div class="calc-field">
         <label>2. ราคาหลักทรัพย์อ้างอิงต่างประเทศ (<span id="calc-curr-label">USD</span>):</label>
-        <input type="number" id="calc-foreign-price" step="0.01" value="100" oninput="runDRCalculation()">
+        <input type="number" id="calc-foreign-price" step="0.01" value="140" oninput="runDRCalculation()">
       </div>
       <div class="calc-field">
         <label>3. อัตราแลกเปลี่ยนเป็นบาท (THB ต่อ 1 หน่วยเงินแม่):</label>
@@ -2381,18 +2385,25 @@
     </div>
 
     <div class="calc-field" style="margin-bottom:14px;">
-      <label>4. อัตราส่วนแปลงสภาพ (จำนวน DR ต่อ 1 หุ้นแม่):</label>
-      <input type="number" id="calc-ratio-input" step="1" value="100" oninput="runDRCalculation()">
-      <div style="font-size:11.5px;color:var(--text3);margin-top:2px;">
-        * เช่น 100 หมายถึง 100 หน่วย DR มีสิทธิเท่ากับ 1 หุ้นแม่ต่างประเทศ (Ratio 100 : 1)
+      <label>4. อัตราแปลงสภาพ Conversion Ratio (สัดส่วน 1 หุ้นแม่ ต่อกี่หน่วย DR):</label>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:13px;color:var(--text2);font-weight:600;white-space:nowrap;">1 หุ้นแม่ :</span>
+        <input type="number" id="calc-ratio-input" step="1" value="200" oninput="runDRCalculation()" style="flex:1;">
+        <span style="font-size:13px;color:var(--text2);font-weight:600;white-space:nowrap;">หน่วย DR</span>
+      </div>
+      <div style="font-size:11.5px;color:var(--text3);margin-top:4px;" id="calc-ratio-hint">
+        💡 สัดส่วน 1 : N หมายถึง หุ้นต่างประเทศ 1 หุ้น ออกเป็น N หน่วย DR (1 DR มีสิทธิเท่ากับ 1/N หุ้นแม่)
       </div>
     </div>
 
     <div class="calc-result-box">
       <div style="font-size:13px;color:var(--text2);font-weight:500;">ราคายุติธรรมประมาณการ (Indicative Fair Price):</div>
-      <div class="calc-result-val"><span id="calc-fair-price">34.50</span> <span style="font-size:16px;color:var(--text);">บาท / DR</span></div>
+      <div class="calc-result-val"><span id="calc-fair-price">24.15</span> <span style="font-size:16px;color:var(--text);">บาท / DR</span></div>
       <div style="font-size:11.5px;color:var(--text3);font-family:monospace;" id="calc-formula-display">
-        (100 USD × 34.50 THB) ÷ 100 = 34.50 บาท
+        (ราคาหุ้นแม่ × FX) ÷ จำนวน DR ต่อ 1 หุ้นแม่
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-top:6px;line-height:1.4;">
+        🛡️ <b>DR ไม่มีอัตราทด (Zero Leverage):</b> ถือครองสิทธิในหุ้นแม่ตามสัดส่วนจริง ไม่มีผลคูณความเสี่ยงหรือค่าเสื่อมเวลาเหมือน DW
       </div>
     </div>
 
@@ -2425,12 +2436,16 @@
       </div>
 
       <div style="background:var(--surface2);border-radius:10px;padding:14px 16px;border-left:4px solid #f59e0b;">
-        <b style="color:#f59e0b;font-size:14px;">3. อัตราส่วนแปลงสภาพ (Conversion Ratio / อัตราทด)</b><br>
-        อัตราส่วนช่วยให้นักลงทุนไทยเข้าถึงหุ้นระดับโลกด้วยเงินจำนวนน้อยได้ เช่น:
+        <b style="color:#f59e0b;font-size:14px;">3. อัตราแปลงสภาพ (Conversion Ratio) — DR ไม่มีอัตราทด!</b><br>
+        ⚠️ <b>ข้อพึงระวัง: DR ไม่ใช่ DW จึง "ไม่มีอัตราทด" (No Leverage / Gearing)</b><br>
+        อัตราแปลงสภาพคือสัดส่วนการแบ่งหน่วยย่อย (Unitization) เพื่อให้นักลงทุนไทยเข้าถึงหุ้นระดับโลกด้วยเงินจำนวนน้อยได้ โดยระบุตามหนังสือชี้ชวน (Prospectus) ของผู้ออกหลักทรัพย์ดังนี้:
         <ul style="margin:6px 0 0;padding-left:20px;">
-          <li><b>อัตราส่วน 100 : 1</b> หมายถึง 100 หน่วย DR เท่ากับ 1 หุ้นแม่ (เช่น หุ้นแม่ราคา $200 = 7,000 บาท แต่ราคา DR จะอยู่ที่ประมาณ <b>70 บาทต่อหน่วย</b>)</li>
-          <li><b>อัตราส่วน 1,000 : 1</b> เหมาะกับหุ้นยุโรปราคาสูง เช่น ASML หรือ LVMH ราคาหุ้นแม่ €700 = 26,000 บาท ราคา DR จะอยู่ที่ประมาณ <b>26 บาทต่อหน่วย</b></li>
+          <li><b>สัดส่วน 1 : N (หุ้นแม่ 1 หุ้น : N หน่วย DR):</b> เช่น <b>1 : 340</b> (NVDA01, AAPL01) หรือ <b>1 : 1,000</b> (AAPL80) หมายถึง หุ้นแม่ 1 หุ้น ออกเป็น 1,000 หน่วย DR (1 DR มีสิทธิเทียบเท่า 0.001 หุ้นแม่) ทำให้ราคาต่อหน่วยบนกระดานไทยไม่แพงเกินไป</li>
+          <li><b>สัดส่วน 1 : 1 (เช่น E1VFVN3001, NDX01):</b> 1 หน่วย DR เท่ากับ 1 หน่วย ETF ต่างประเทศโดยตรง</li>
         </ul>
+        <div style="margin-top:6px;font-size:12px;color:var(--text2);">
+          * <b>สูตรคำนวณราคาอ้างอิง:</b> <code>ราคา DR (บาท) = (ราคาหุ้นแม่ × อัตราแลกเปลี่ยน) ÷ N</code>
+        </div>
       </div>
 
       <div style="background:var(--surface2);border-radius:10px;padding:14px 16px;border-left:4px solid #a855f7;">
@@ -5511,7 +5526,7 @@ const ALL_DRS = [
     "market": "NYSE Arca",
     "asset_class": "ดัชนี / ETF",
     "sector": "Broad Market Index",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -5532,7 +5547,7 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "ดัชนี / ETF",
     "sector": "Broad Tech Index",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -5553,7 +5568,7 @@ const ALL_DRS = [
     "market": "NYSE Arca",
     "asset_class": "ดัชนี / ETF",
     "sector": "High Dividend / Covered Call",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.หยวนต้า (19)",
     "issuer_code": "19",
@@ -5574,7 +5589,7 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "ดัชนี / ETF",
     "sector": "High Dividend / Nasdaq Covered Call",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.หยวนต้า (19)",
     "issuer_code": "19",
@@ -5595,8 +5610,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "AI / Semiconductors",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 200",
+    "ratio_num": 200,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5616,8 +5631,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "AI / Semiconductors",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 340",
+    "ratio_num": 340,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -5637,8 +5652,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Consumer Tech / Ecosystem",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5658,8 +5673,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Consumer Tech",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 340",
+    "ratio_num": 340,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -5679,8 +5694,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Enterprise Cloud & AI",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 2,000",
+    "ratio_num": 2000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5700,8 +5715,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Enterprise Cloud & AI",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 3,400",
+    "ratio_num": 3400,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -5721,8 +5736,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Search, Ads, Cloud & AI",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 2,000",
+    "ratio_num": 2000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5742,8 +5757,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "E-Commerce & Cloud AWS",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 4,000",
+    "ratio_num": 4000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5763,8 +5778,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Social Media & Open-source AI",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 8,000",
+    "ratio_num": 8000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5784,8 +5799,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "EV, Autonomous & Energy",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 5,000",
+    "ratio_num": 5000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5805,8 +5820,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "EV & Clean Energy",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 340",
+    "ratio_num": 340,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -5826,8 +5841,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Streaming Entertainment",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 3,000",
+    "ratio_num": 3000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5847,8 +5862,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Semiconductors & AI Chips",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5868,8 +5883,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Custom AI ASICs & Networking",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5889,8 +5904,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Enterprise & Defense AI Software",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 300",
+    "ratio_num": 300,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5910,8 +5925,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Cybersecurity & Cloud Protection",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 2,000",
+    "ratio_num": 2000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5931,8 +5946,8 @@ const ALL_DRS = [
     "market": "NYSE (ADR)",
     "asset_class": "หุ้นรายตัว",
     "sector": "Semiconductor Foundry",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5952,8 +5967,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Pharmaceuticals & GLP-1",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 5,000",
+    "ratio_num": 5000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5973,8 +5988,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Conglomerate & Value Investing",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 10,000",
+    "ratio_num": 10000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -5994,8 +6009,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Retail & Consumer Staples",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 500",
+    "ratio_num": 500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6015,8 +6030,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Membership Warehouse Club",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 5,000",
+    "ratio_num": 5000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6141,8 +6156,8 @@ const ALL_DRS = [
     "market": "HKEX / SSE / SZSE",
     "asset_class": "ดัชนี / ETF",
     "sector": "China A-Shares 300",
-    "ratio": "1 : 1",
-    "ratio_num": 1,
+    "ratio": "1 : 10",
+    "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -6204,7 +6219,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Gaming, Social (WeChat) & Fintech",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -6225,7 +6240,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Gaming & Super App",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6246,8 +6261,8 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "E-Commerce & AliCloud",
-    "ratio": "10 : 1",
-    "ratio_num": 10,
+    "ratio": "1 : 100",
+    "ratio_num": 100,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6267,8 +6282,8 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "E-Commerce & Cloud",
-    "ratio": "10 : 1",
-    "ratio_num": 10,
+    "ratio": "1 : 44",
+    "ratio_num": 44,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -6288,7 +6303,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "EV & Blade Battery",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -6309,8 +6324,8 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "EV & Clean Energy",
-    "ratio": "10 : 1",
-    "ratio_num": 10,
+    "ratio": "1 : 440",
+    "ratio_num": 440,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -6330,7 +6345,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Smartphones, IoT & EV",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -6351,7 +6366,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Food Delivery & Local Life Services",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6372,7 +6387,7 @@ const ALL_DRS = [
     "market": "SZSE (Shenzhen)",
     "asset_class": "หุ้นรายตัว",
     "sector": "EV Batteries & Energy Storage",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -6393,8 +6408,8 @@ const ALL_DRS = [
     "market": "Euronext Amsterdam",
     "asset_class": "หุ้นรายตัว",
     "sector": "Extreme UV Lithography (EUV)",
-    "ratio": "1,000 : 1",
-    "ratio_num": 1000,
+    "ratio": "1 : 1,200",
+    "ratio_num": 1200,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
     "type": "DR",
@@ -6414,7 +6429,7 @@ const ALL_DRS = [
     "market": "Euronext Paris",
     "asset_class": "หุ้นรายตัว",
     "sector": "Luxury Goods & Fashion",
-    "ratio": "1,000 : 1",
+    "ratio": "1 : 1,000",
     "ratio_num": 1000,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6435,7 +6450,7 @@ const ALL_DRS = [
     "market": "Euronext Paris",
     "asset_class": "หุ้นรายตัว",
     "sector": "Ultra-Luxury Goods",
-    "ratio": "1,000 : 1",
+    "ratio": "1 : 1,000",
     "ratio_num": 1000,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6456,7 +6471,7 @@ const ALL_DRS = [
     "market": "Euronext Paris",
     "asset_class": "หุ้นรายตัว",
     "sector": "Beauty & Cosmetics",
-    "ratio": "1,000 : 1",
+    "ratio": "1 : 1,000",
     "ratio_num": 1000,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6477,7 +6492,7 @@ const ALL_DRS = [
     "market": "Nasdaq Copenhagen",
     "asset_class": "หุ้นรายตัว",
     "sector": "Biopharma & GLP-1 Obesity",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6540,7 +6555,7 @@ const ALL_DRS = [
     "market": "TSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Automotive & Hybrid",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6561,7 +6576,7 @@ const ALL_DRS = [
     "market": "TSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Gaming, Entertainment & Sensors",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6582,7 +6597,7 @@ const ALL_DRS = [
     "market": "TSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Automotive & Motorcycles",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -6645,8 +6660,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Semiconductors & Foundry",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 200",
+    "ratio_num": 200,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6666,8 +6681,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Mobile Chips & On-Device AI",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6687,8 +6702,8 @@ const ALL_DRS = [
     "market": "NASDAQ (ADR)",
     "asset_class": "หุ้นรายตัว",
     "sector": "Processor Architecture IP",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6708,8 +6723,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "AI Server Infrastructure & Liquid Cooling",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 300",
+    "ratio_num": 300,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6729,8 +6744,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Healthcare & Medical Devices",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6750,8 +6765,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Consumer Staples",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6771,8 +6786,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Beverages & Consumer Staples",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 500",
+    "ratio_num": 500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6792,8 +6807,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Snacks & Beverages",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,000",
+    "ratio_num": 1000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6813,8 +6828,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Quick-Service Restaurants",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 2,000",
+    "ratio_num": 2000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6834,8 +6849,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Specialty Coffee Retail",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 500",
+    "ratio_num": 500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6855,8 +6870,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Athletic Footwear & Apparel",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 500",
+    "ratio_num": 500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6876,8 +6891,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Entertainment, Parks & Disney+",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 600",
+    "ratio_num": 600,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6897,8 +6912,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Payment Network & Fintech",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,500",
+    "ratio_num": 1500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6918,8 +6933,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Global Payment Processing",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 2,500",
+    "ratio_num": 2500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6939,8 +6954,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Global Investment Banking",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 1,200",
+    "ratio_num": 1200,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6960,8 +6975,8 @@ const ALL_DRS = [
     "market": "NASDAQ",
     "asset_class": "หุ้นรายตัว",
     "sector": "Online Travel Agency (OTA)",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 20,000",
+    "ratio_num": 20000,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -6981,8 +6996,8 @@ const ALL_DRS = [
     "market": "NYSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Mobility & Delivery Platform",
-    "ratio": "100 : 1",
-    "ratio_num": 100,
+    "ratio": "1 : 500",
+    "ratio_num": 500,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
     "type": "DR",
@@ -7002,7 +7017,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Search Engine & Ernie AI",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -7023,7 +7038,7 @@ const ALL_DRS = [
     "market": "HKEX",
     "asset_class": "หุ้นรายตัว",
     "sector": "Insurance & Fintech",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "ธนาคารกรุงไทย (80)",
     "issuer_code": "80",
@@ -7044,7 +7059,7 @@ const ALL_DRS = [
     "market": "TSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Apparel & Fast Fashion (UNIQLO)",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -7065,7 +7080,7 @@ const ALL_DRS = [
     "market": "TSE",
     "asset_class": "หุ้นรายตัว",
     "sector": "Gaming & Entertainment IP",
-    "ratio": "10 : 1",
+    "ratio": "1 : 10",
     "ratio_num": 10,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -7086,7 +7101,7 @@ const ALL_DRS = [
     "market": "XETRA (Frankfurt)",
     "asset_class": "หุ้นรายตัว",
     "sector": "Enterprise ERP & Cloud Software",
-    "ratio": "100 : 1",
+    "ratio": "1 : 100",
     "ratio_num": 100,
     "issuer": "บล.บัวหลวง (01)",
     "issuer_code": "01",
@@ -7304,6 +7319,7 @@ function renderDRTable() {
 
   let html = '';
   for (const d of filteredDRs) {
+    const entitlement = (1 / d.ratio_num).toLocaleString('en-US', { maximumFractionDigits: 6 });
     html += `
       <tr>
         <td>
@@ -7330,7 +7346,7 @@ function renderDRTable() {
           <div style="font-size:11.5px;font-weight:500;">${d.sector}</div>
         </td>
         <td>
-          <span class="dr-ratio-badge">${d.ratio}</span>
+          <span class="dr-ratio-badge" title="1 หุ้นแม่ : ${d.ratio_num.toLocaleString()} หน่วย DR (1 DR = ${entitlement} หุ้นแม่)">${d.ratio}</span>
         </td>
         <td>
           <div style="font-size:11.5px;">${d.issuer}</div>
@@ -7385,9 +7401,16 @@ function onCalcSelectChange() {
   const currLabel = document.getElementById('calc-curr-label');
   const fxInput = document.getElementById('calc-fx-rate');
   const foreignPriceInput = document.getElementById('calc-foreign-price');
+  const hintEl = document.getElementById('calc-ratio-hint');
 
   if (ratioInput) ratioInput.value = item.ratio_num;
   if (currLabel) currLabel.textContent = item.currency.split('/')[0].trim();
+
+  // Dynamic Ratio Hint
+  if (hintEl) {
+    const ent = (1 / item.ratio_num).toLocaleString('en-US', { maximumFractionDigits: 6 });
+    hintEl.innerHTML = `💡 สัดส่วน <b>${item.ratio}</b>: หุ้นต่างประเทศ 1 หุ้น ถูกแปลงสภาพเป็น ${item.ratio_num.toLocaleString()} หน่วย DR (1 DR มีสิทธิเท่ากับ ${ent} หุ้นแม่)`;
+  }
 
   // Smart default FX rates
   const cur = item.currency.toUpperCase();
@@ -7405,7 +7428,11 @@ function onCalcSelectChange() {
   if (foreignPriceInput) {
     if (item.symbol === 'NVDA80' || item.symbol === 'NVDA01') foreignPriceInput.value = '140';
     else if (item.symbol === 'AAPL80' || item.symbol === 'AAPL01') foreignPriceInput.value = '230';
-    else if (item.symbol === 'MSFT80' || item.symbol === 'MSFT01') foreignPriceInput.value = '420';
+    else if (item.symbol === 'MSFT80' || item.symbol === 'MSFT01') foreignPriceInput.value = '430';
+    else if (item.symbol === 'TSLA80' || item.symbol === 'TSLA01') foreignPriceInput.value = '250';
+    else if (item.symbol === 'AMZN80' || item.symbol === 'AMZN01') foreignPriceInput.value = '190';
+    else if (item.symbol === 'META80' || item.symbol === 'META01') foreignPriceInput.value = '580';
+    else if (item.symbol === 'GOOG80') foreignPriceInput.value = '170';
     else if (item.symbol === 'NDX01' || item.symbol === 'QQQ80') foreignPriceInput.value = '490';
     else if (item.symbol === 'SP50001' || item.symbol === 'SPY80') foreignPriceInput.value = '580';
     else if (item.symbol === 'E1VFVN3001' || item.symbol === 'E1VFVN3080') foreignPriceInput.value = '27500';
@@ -7438,7 +7465,7 @@ function runDRCalculation() {
     fairPriceEl.textContent = fairPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 3 });
   }
   if (formulaEl) {
-    formulaEl.textContent = '(' + foreignPrice.toLocaleString() + ' ' + cur + ' × ' + fxRate + ' THB) ÷ ' + ratio.toLocaleString() + ' = ' + fairPrice.toFixed(3) + ' บาท / DR';
+    formulaEl.textContent = `(${foreignPrice.toLocaleString()} ${cur} × ${fxRate} THB) ÷ ${ratio.toLocaleString()} DR = ${fairPrice.toFixed(3)} บาท / DR`;
   }
 }
 
