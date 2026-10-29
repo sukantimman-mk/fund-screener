@@ -1657,6 +1657,370 @@
 }
 .suggest-action-btn:hover { background: var(--accent); color: #fff; }
 
+
+  /* MAIN NAV TABS */
+  .main-nav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface2);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-left: 12px;
+  }
+  .main-nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+  }
+  .main-nav-tab:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+  }
+  .main-nav-tab.active {
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .tab-badge {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 12px;
+    background: var(--surface3);
+    color: var(--text2);
+  }
+  .main-nav-tab.active .tab-badge {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* DR VIEW CONTAINER */
+  .dr-view-container {
+    padding: 20px 24px 60px;
+    max-width: 1680px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* DR HERO CARDS */
+  .dr-hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .dr-kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .dr-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .dr-kpi-label {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 500;
+  }
+  .dr-kpi-val {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .dr-kpi-sub {
+    font-size: 11.5px;
+    color: var(--text2);
+    line-height: 1.4;
+  }
+
+  /* DR TOOLBAR */
+  .dr-toolbar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .dr-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .dr-search-box {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+  }
+  .dr-search-box input {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13.5px;
+    box-sizing: border-box;
+  }
+  .dr-search-box input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+  }
+  .dr-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-size: 14px;
+    pointer-events: none;
+  }
+  .dr-action-btn {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .dr-action-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.08);
+  }
+  .dr-action-btn.primary {
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+  }
+  .dr-action-btn.primary:hover {
+    opacity: 0.92;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  }
+
+  /* DR FILTER CHIPS */
+  .dr-filter-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+  .dr-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .dr-filter-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text3);
+    min-width: 85px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .dr-pill {
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text2);
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .dr-pill:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .dr-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* DR TABLE WRAPPER */
+  .dr-table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .dr-table-wrapper {
+    overflow-x: auto;
+    max-height: calc(100vh - 350px);
+  }
+  .dr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    text-align: left;
+  }
+  .dr-table th {
+    background: var(--surface2);
+    color: var(--text2);
+    font-weight: 600;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .dr-table th:hover {
+    color: var(--text);
+  }
+  .dr-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border2);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  .dr-table tr:hover td {
+    background: rgba(59,130,246,0.04);
+  }
+
+  /* DR BADGES */
+  .dr-type-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .dr-type-badge.dr {
+    background: rgba(2,132,199,0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56,189,248,0.3);
+  }
+  .dr-type-badge.drx {
+    background: rgba(34,197,94,0.15);
+    color: #4ade80;
+    border: 1px solid rgba(74,222,128,0.3);
+  }
+  .dr-symbol-link {
+    font-weight: 700;
+    color: var(--accent2);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .dr-symbol-link:hover {
+    text-decoration: underline;
+  }
+  .dr-ratio-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: var(--accent2);
+    font-weight: 600;
+  }
+
+  /* CALCULATOR MODAL */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 18px 0;
+  }
+  @media (max-width: 600px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+  .calc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .calc-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+  .calc-field input, .calc-field select {
+    padding: 9px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+  .calc-field input:focus, .calc-field select:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+  .calc-result-box {
+    background: linear-gradient(135deg, rgba(2,132,199,0.1), rgba(37,99,235,0.06));
+    border: 1px solid rgba(59,130,246,0.25);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    margin-top: 14px;
+  }
+  .calc-result-val {
+    font-size: 28px;
+    font-weight: 800;
+    color: #38bdf8;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
 </style>
 </head>
 <body>
@@ -1664,10 +2028,26 @@
 <header>
   <button class="sidebar-toggle" id="sidebar-toggle" title="เปิด/ปิด ตัวกรอง" aria-label="Toggle sidebar">☰</button>
   <div class="logo">fund<span>.</span>screener</div>
-  <div style="color:var(--text3);font-size:13px;">— เปรียบเทียบกองทุนรวมไทย</div>
-  <div class="header-stats">
+  
+  <!-- MAIN NAVIGATION TABS -->
+  <div class="main-nav-tabs">
+    <button class="main-nav-tab active" id="tab-btn-funds" onclick="switchMainTab('funds')">
+      <span>📊 กองทุนรวมไทย</span>
+      <span class="tab-badge" id="tab-badge-funds">3,807</span>
+    </button>
+    <button class="main-nav-tab" id="tab-btn-dr" onclick="switchMainTab('dr')">
+      <span>🌐 DR / DRx ต่างประเทศ</span>
+      <span class="tab-badge" id="tab-badge-dr" style="background:#2563eb;color:#fff;">78</span>
+    </button>
+  </div>
+
+  <div class="header-stats" id="stats-funds">
     <span>กองทุนทั้งหมด <b id="total-count">—</b> กอง</span>
     <span>แสดง <b id="shown-count">—</b> กอง</span>
+  </div>
+  <div class="header-stats" id="stats-dr" style="display:none;">
+    <span>DR ทั้งหมด <b id="total-dr-count">78</b> ตัว</span>
+    <span>แสดง <b id="shown-dr-count">78</b> ตัว</span>
   </div>
 </header>
 
@@ -1847,6 +2227,256 @@
 </div>
 
 <!-- MODAL -->
+<!-- ==================== DR / DRx VIEW ==================== -->
+<div class="dr-view-container" id="dr-view" style="display:none;">
+  
+  <!-- DR HERO CARDS -->
+  <div class="dr-hero-grid">
+    <div class="dr-kpi-card">
+      <div class="dr-kpi-label">ตราสาร DR & DRx ทั้งหมด</div>
+      <div class="dr-kpi-val"><span id="kpi-dr-total">78</span> <span style="font-size:13px;color:var(--text3);font-weight:normal;">หลักทรัพย์</span></div>
+      <div class="dr-kpi-sub">ครอบคลุมหุ้นและ ETF ชั้นนำระดับโลก ซื้อขายด้วยเงินบาทผ่าน SET</div>
+    </div>
+    <div class="dr-kpi-card">
+      <div class="dr-kpi-label">สหรัฐอเมริกา (US Tech & Indices)</div>
+      <div class="dr-kpi-val" style="color:#38bdf8;">NVDA • AAPL • QQQ • SPY</div>
+      <div class="dr-kpi-sub">รวม Big Tech และดัชนีเรือธง S&P 500 / Nasdaq 100 ซื้อขายตามเวลาไทยและกลางคืน</div>
+    </div>
+    <div class="dr-kpi-card">
+      <div class="dr-kpi-label">มังกรจีน & ฮ่องกง (CN / HK)</div>
+      <div class="dr-kpi-val" style="color:#f59e0b;">Tencent • BABA • BYD • HSI</div>
+      <div class="dr-kpi-sub">เข้าถึงหุ้นเทคจีนแผ่นดินใหญ่ A-Shares และ Hang Seng Tech โดยตรง</div>
+    </div>
+    <div class="dr-kpi-card">
+      <div class="dr-kpi-label">เวียดนาม & ยุโรป (VN & EU)</div>
+      <div class="dr-kpi-val" style="color:#a855f7;">VN30 • Diamond • ASML • LVMH</div>
+      <div class="dr-kpi-sub">หุ้นชิป EUV ผูกขาดโลก สินค้าหรูหราฝรั่งเศส และหุ้นเวียดนามติดเพดาน FOL</div>
+    </div>
+    <div class="dr-kpi-card">
+      <div class="dr-kpi-label">🛡️ สิทธิประโยชน์ทางภาษี</div>
+      <div class="dr-kpi-val" style="color:#22c55e;">0% Capital Gains</div>
+      <div class="dr-kpi-sub">กำไรส่วนต่างราคาได้รับการยกเว้นภาษีในไทยเหมือนหุ้นไทยทั่วไป ไม่ติดเกณฑ์ภาษีเงินได้บุคคลธรรมดา</div>
+    </div>
+  </div>
+
+  <!-- DR TOOLBAR & FILTERS -->
+  <div class="dr-toolbar">
+    <div class="dr-top-bar">
+      <div class="dr-search-box">
+        <span class="dr-search-icon">🔍</span>
+        <input type="text" id="dr-search-input" placeholder="ค้นหา DR, หุ้นแม่ เช่น NVDA, Apple, QQQ, VN30, ASML, Tencent, BYD..." oninput="onDRFilterChange()">
+      </div>
+      <button class="dr-action-btn primary" onclick="openDRCalcModal()" title="คำนวณราคายุติธรรมและอัตราส่วน DR ต่อหุ้นแม่">
+        🧮 เครื่องคำนวณราคายุติธรรม (Fair Price)
+      </button>
+      <button class="dr-action-btn" onclick="openDRGuideModal()" title="อ่านคู่มือ DR vs DRx และข้อแตกต่างทางภาษี">
+        📖 คู่มือ DR vs DRx & ภาษี
+      </button>
+      <button class="dr-action-btn" onclick="exportDRCSV()" title="ดาวน์โหลดรายชื่อ DR ทั้งหมดเป็นไฟล์ CSV">
+        ⬇ Export CSV
+      </button>
+    </div>
+
+    <!-- PRESET PILLS -->
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:4px;">
+      <span style="font-size:12px;color:var(--text3);font-weight:600;">⚡ ทางลัด:</span>
+      <div class="dr-pill" onclick="applyDRPreset('all')">ทั้งหมด</div>
+      <div class="dr-pill" onclick="applyDRPreset('us-tech')">🇺🇸 หุ้นเทคสหรัฐฯ (US Megacap)</div>
+      <div class="dr-pill" onclick="applyDRPreset('indices')">📈 ดัชนีโลก (QQQ, SPY, VN30, HSI, TOPIX)</div>
+      <div class="dr-pill" onclick="applyDRPreset('vietnam')">🇻🇳 หุ้นเวียดนาม (VN30 & Diamond)</div>
+      <div class="dr-pill" onclick="applyDRPreset('china')">🇨🇳 มังกรจีน (Tencent, Alibaba, BYD, Xiaomi)</div>
+      <div class="dr-pill" onclick="applyDRPreset('luxury')">💎 สินค้าหรูหรา & ยุโรป (ASML, LVMH, Hermès)</div>
+      <div class="dr-pill" onclick="applyDRPreset('drx')">🟩 DRx เศษหุ้น (US Market Hours)</div>
+    </div>
+
+    <!-- MULTI-CRITERIA FILTERS -->
+    <div class="dr-filter-rows">
+      <!-- 1. Country / Market -->
+      <div class="dr-filter-row">
+        <span class="dr-filter-title">ประเทศ / ตลาด:</span>
+        <div class="dr-pill active" data-dr-country="" onclick="setDRCountryFilter('', this)">ทุกประเทศ</div>
+        <div class="dr-pill" data-dr-country="US" onclick="setDRCountryFilter('US', this)">🇺🇸 สหรัฐฯ</div>
+        <div class="dr-pill" data-dr-country="CN_HK" onclick="setDRCountryFilter('CN_HK', this)">🇨🇳/🇭🇰 จีน & ฮ่องกง</div>
+        <div class="dr-pill" data-dr-country="VN" onclick="setDRCountryFilter('VN', this)">🇻🇳 เวียดนาม</div>
+        <div class="dr-pill" data-dr-country="JP" onclick="setDRCountryFilter('JP', this)">🇯🇵 ญี่ปุ่น</div>
+        <div class="dr-pill" data-dr-country="EU" onclick="setDRCountryFilter('EU', this)">🇪🇺 ยุโรป</div>
+        <div class="dr-pill" data-dr-country="OTHER" onclick="setDRCountryFilter('OTHER', this)">🇸🇬/🇹🇼 อื่นๆ</div>
+      </div>
+
+      <!-- 2. Structure Type -->
+      <div class="dr-filter-row">
+        <span class="dr-filter-title">รูปแบบตราสาร:</span>
+        <div class="dr-pill active" data-dr-type="" onclick="setDRTypeFilter('', this)">ทั้งหมด</div>
+        <div class="dr-pill" data-dr-type="DR" onclick="setDRTypeFilter('DR', this)">🟦 DR ปกติ (SET Session)</div>
+        <div class="dr-pill" data-dr-type="DRx" onclick="setDRTypeFilter('DRx', this)">🟩 DRx (เศษหุ้น 0.0001 หน่วย)</div>
+      </div>
+
+      <!-- 3. Asset Class -->
+      <div class="dr-filter-row">
+        <span class="dr-filter-title">ประเภทสินทรัพย์:</span>
+        <div class="dr-pill active" data-dr-class="" onclick="setDRClassFilter('', this)">ทั้งหมด</div>
+        <div class="dr-pill" data-dr-class="stock" onclick="setDRClassFilter('stock', this)">🏢 หุ้นรายตัว (Individual Stocks)</div>
+        <div class="dr-pill" data-dr-class="etf" onclick="setDRClassFilter('etf', this)">📈 ดัชนี / ETF (Index ETFs)</div>
+      </div>
+
+      <!-- 4. Issuer -->
+      <div class="dr-filter-row">
+        <span class="dr-filter-title">บล. ผู้ออกตราสาร:</span>
+        <div class="dr-pill active" data-dr-issuer="" onclick="setDRIssuerFilter('', this)">ทุกผู้ออก</div>
+        <div class="dr-pill" data-dr-issuer="01" onclick="setDRIssuerFilter('01', this)">🔵 บล. บัวหลวง (01)</div>
+        <div class="dr-pill" data-dr-issuer="80" onclick="setDRIssuerFilter('80', this)">🟡 ธนาคารกรุงไทย (80 / 80X)</div>
+        <div class="dr-pill" data-dr-issuer="19" onclick="setDRIssuerFilter('19', this)">🟠 บล. หยวนต้า (19)</div>
+        <div class="dr-pill" data-dr-issuer="13" onclick="setDRIssuerFilter('13', this)">🔴 บล. เคจีไอ (13)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DR TABLE CARD -->
+  <div class="dr-table-card">
+    <div class="dr-table-wrapper">
+      <table class="dr-table">
+        <thead>
+          <tr>
+            <th onclick="sortDRTable('symbol')">รหัสย่อ (Symbol) ↕</th>
+            <th onclick="sortDRTable('name')">หลักทรัพย์อ้างอิงต่างประเทศ ↕</th>
+            <th onclick="sortDRTable('country')">ประเทศ / ตลาด ↕</th>
+            <th onclick="sortDRTable('type')">ประเภท ↕</th>
+            <th onclick="sortDRTable('sector')">กลุ่มธุรกิจ / นโยบาย ↕</th>
+            <th onclick="sortDRTable('ratio_num')">อัตราส่วนแปลงสภาพ (อัตราทด) ↕</th>
+            <th onclick="sortDRTable('issuer')">ผู้ออกตราสาร ↕</th>
+            <th>เวลาซื้อขาย</th>
+            <th>สกุลเงินแม่</th>
+            <th style="text-align:center;">เครื่องคำนวณ</th>
+          </tr>
+        </thead>
+        <tbody id="dr-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:12px 18px;background:var(--surface2);border-top:1px solid var(--border);font-size:12px;color:var(--text3);display:flex;justify-content:space-between;align-items:center;">
+      <span>แสดง DR / DRx จำนวน <b id="dr-shown-footer-count">0</b> ตัว</span>
+      <span>💡 คลิกที่ปุ่ม <b>"🧮 คำนวณ"</b> ที่แต่ละแถวเพื่อเปิดเครื่องคำนวณราคายุติธรรมทันที</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- DR FAIR PRICE CALCULATOR MODAL -->
+<div class="modal-overlay" id="dr-calc-modal" onclick="closeDRCalcModal(event)">
+  <div class="modal" style="max-width:620px;padding:26px 28px;" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:8px;">
+        <span>🧮 เครื่องคำนวณราคายุติธรรม DR (Indicative Fair Price)</span>
+      </h3>
+      <button class="ai-icon-btn" onclick="closeDRCalcModal()" style="font-size:16px;">✕</button>
+    </div>
+    <p style="font-size:12.5px;color:var(--text2);margin:0 0 16px;line-height:1.5;">
+      คำนวณราคาประมาณการของ DR ในตลาดหุ้นไทย (บาท) โดยอ้างอิงจากราคาหุ้นแม่ต่างประเทศ อัตราแลกเปลี่ยน และอัตราส่วนแปลงสภาพ (Conversion Ratio)
+    </p>
+
+    <div class="calc-field" style="margin-bottom:12px;">
+      <label>1. เลือกหลักทรัพย์ DR / DRx ที่ต้องการคำนวณ:</label>
+      <select id="calc-dr-select" onchange="onCalcSelectChange()">
+        <!-- Filled by JS -->
+      </select>
+    </div>
+
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label>2. ราคาหลักทรัพย์อ้างอิงต่างประเทศ (<span id="calc-curr-label">USD</span>):</label>
+        <input type="number" id="calc-foreign-price" step="0.01" value="100" oninput="runDRCalculation()">
+      </div>
+      <div class="calc-field">
+        <label>3. อัตราแลกเปลี่ยนเป็นบาท (THB ต่อ 1 หน่วยเงินแม่):</label>
+        <input type="number" id="calc-fx-rate" step="0.01" value="34.50" oninput="runDRCalculation()">
+      </div>
+    </div>
+
+    <div class="calc-field" style="margin-bottom:14px;">
+      <label>4. อัตราส่วนแปลงสภาพ (จำนวน DR ต่อ 1 หุ้นแม่):</label>
+      <input type="number" id="calc-ratio-input" step="1" value="100" oninput="runDRCalculation()">
+      <div style="font-size:11.5px;color:var(--text3);margin-top:2px;">
+        * เช่น 100 หมายถึง 100 หน่วย DR มีสิทธิเท่ากับ 1 หุ้นแม่ต่างประเทศ (Ratio 100 : 1)
+      </div>
+    </div>
+
+    <div class="calc-result-box">
+      <div style="font-size:13px;color:var(--text2);font-weight:500;">ราคายุติธรรมประมาณการ (Indicative Fair Price):</div>
+      <div class="calc-result-val"><span id="calc-fair-price">34.50</span> <span style="font-size:16px;color:var(--text);">บาท / DR</span></div>
+      <div style="font-size:11.5px;color:var(--text3);font-family:monospace;" id="calc-formula-display">
+        (100 USD × 34.50 THB) ÷ 100 = 34.50 บาท
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:20px;">
+      <button class="dr-action-btn primary" onclick="closeDRCalcModal()">ตกลง / ปิดหน้าต่าง</button>
+    </div>
+  </div>
+</div>
+
+<!-- DR VS DRX GUIDE MODAL -->
+<div class="modal-overlay" id="dr-guide-modal" onclick="closeDRGuideModal(event)">
+  <div class="modal" style="max-width:740px;padding:26px 28px;" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;font-size:18px;display:flex;align-items:center;gap:8px;">
+        <span>📖 คู่มือเจาะลึก DR vs DRx และสิทธิประโยชน์ทางภาษี</span>
+      </h3>
+      <button class="ai-icon-btn" onclick="closeDRGuideModal()" style="font-size:16px;">✕</button>
+    </div>
+
+    <div style="overflow-x:auto;margin-bottom:18px;">
+      <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
+        <thead>
+          <tr style="background:var(--surface2);">
+            <th style="padding:10px 12px;border:1px solid var(--border);text-align:left;">หัวข้อเปรียบเทียบ</th>
+            <th style="padding:10px 12px;border:1px solid var(--border);color:#38bdf8;">🟦 DR (Depositary Receipt)</th>
+            <th style="padding:10px 12px;border:1px solid var(--border);color:#4ade80;">🟩 DRx (Fractional DR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:9px 12px;border:1px solid var(--border);font-weight:600;">การซื้อขายขั้นต่ำ</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);">1 Board Lot = 100 หน่วย (หรือ 1 หน่วยในกระดาน Odd-Lot)</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);color:#4ade80;font-weight:600;">ซื้อขายเป็นเศษส่วนได้ เริ่มต้นเพียง 0.0001 หน่วย หรือระบุเป็นจำนวนเงินบาทได้เลย</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;border:1px solid var(--border);font-weight:600;">เวลาทำการซื้อขาย</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);">เวลาทำการตลาดหุ้นไทย (10:00 - 16:30 น.)</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);">ซื้อขายตามเวลาตลาดหุ้นต่างประเทศจริง เช่น รอบสหรัฐฯ (20:00 - 04:00 น.)</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;border:1px solid var(--border);font-weight:600;">บัญชีที่ใช้ซื้อขาย</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);">บัญชีหุ้นไทยทั่วไป (Cash Balance / Cash Account)</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);">บัญชี DRx (เปิดง่ายผ่านแอป Streaming)</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;border:1px solid var(--border);font-weight:600;">เงินปันผล (Dividend)</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);" colspan="2">ส่งผ่านเงินปันผลจากหุ้นแม่จริง (หักภาษี ณ ที่จ่ายตามกฎหมายต้นทางและค่าธรรมเนียมส่งผ่าน)</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;border:1px solid var(--border);font-weight:600;color:var(--green);">ภาษีส่วนต่างราคา (Capital Gains)</td>
+            <td style="padding:9px 12px;border:1px solid var(--border);color:var(--green);font-weight:700;" colspan="2">
+              🎉 ได้รับการยกเว้นภาษีเงินได้บุคคลธรรมดา 100% เสมือนการซื้อขายหุ้นไทยในตลาดหลักทรัพย์ฯ!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="background:var(--surface2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.6;border-left:4px solid var(--accent);">
+      <b>💡 ทำไม DR จึงเป็นทางเลือกยอดนิยมสำหรับนักลงทุนไทย?</b><br>
+      1. <b>ไม่ต้องแลกเงินตราต่างประเทศ:</b> ซื้อขายได้ด้วยสกุลเงินบาททันทีผ่านพอร์ต Streaming ในไทย<br>
+      2. <b>ไม่ต้องยื่นแบบภาษีต่างประเทศ:</b> ไม่มีความเสี่ยงเรื่องกฎหมายการดึงเงินกลับประเทศข้ามปีภาษี เพราะเป็นการซื้อขายในตลาด SET<br>
+      3. <b>ลงทุนในบริษัทระดับโลกด้วยเงินหลักสิบหลักร้อย:</b> อัตราส่วน Conversion Ratio ช่วยซอยราคาต่อหน่วยให้จับต้องได้ง่าย เช่น หุ้นแม่ราคา $1,000 หากมีอัตราส่วน 1,000 : 1 ราคา DR ในไทยจะอยู่ที่ประมาณ 35 บาทเท่านั้น
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:18px;">
+      <button class="dr-action-btn primary" onclick="closeDRGuideModal()">เข้าใจแล้ว / ปิดหน้าต่าง</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal-content"></div>
 </div>
@@ -4855,6 +5485,2052 @@ function openFundModalById(fundId) {
     openModal(fund);
   }
 }
+
+
+
+const ALL_DRS = [
+  {
+    "symbol": "NDX01",
+    "name": "ChinaAMC NASDAQ 100 ETF",
+    "underlying": "NASDAQ 100 Index (QQQ)",
+    "underlying_ticker": "QQQ / 3086.HK",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ / HKEX",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Tech Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD / USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Pass-through)",
+    "description": "อ้างอิง ETF ที่ลงทุนเลียนแบบดัชนี Nasdaq 100 ครอบคลุม 100 บริษัทเทคโนโลยีและนวัตกรรมชั้นนำของโลก (Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta)"
+  },
+  {
+    "symbol": "SP50001",
+    "name": "iShares Core S&P 500 ETF",
+    "underlying": "S&P 500 Index (SPY / IVV)",
+    "underlying_ticker": "IVV / 3147.HK",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE / HKEX",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Market Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD / USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Pass-through)",
+    "description": "อ้างอิงดัชนี S&P 500 ตัวแทนของบริษัทขนาดใหญ่ที่สุด 500 บริษัทของสหรัฐอเมริกา ครอบคลุมเศรษฐกิจสหรัฐฯ กว่า 80%"
+  },
+  {
+    "symbol": "SPY80",
+    "name": "SPDR S&P 500 ETF Trust",
+    "underlying": "S&P 500 ETF Trust",
+    "underlying_ticker": "SPY",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE Arca",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Market Index",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Pass-through)",
+    "description": "DR อ้างอิง SPDR S&P 500 ETF (SPY) กองทุน ETF ที่มีมูลค่าสินทรัพย์และสภาพคล่องสูงที่สุดในโลก"
+  },
+  {
+    "symbol": "QQQ80",
+    "name": "Invesco QQQ Trust",
+    "underlying": "Invesco QQQ Trust Series 1",
+    "underlying_ticker": "QQQ",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Tech Index",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Pass-through)",
+    "description": "DR อ้างอิง Invesco QQQ Trust โดยตรงจากตลาดหุ้นสหรัฐฯ ซื้อขายเป็นเงินบาทในเวลาทำการไทย"
+  },
+  {
+    "symbol": "JEPI19",
+    "name": "JPMorgan Equity Premium Income ETF",
+    "underlying": "JPMorgan Covered Call Equity ETF",
+    "underlying_ticker": "JEPI",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE Arca",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "High Dividend / Covered Call",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.หยวนต้า (19)",
+    "issuer_code": "19",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลสม่ำเสมอ (Monthly)",
+    "description": "Active ETF หุ้นสหรัฐฯ คุณภาพสูง เน้นจ่ายเงินปันผลระดับสูงผ่านกลยุทธ์ Covered Call Options"
+  },
+  {
+    "symbol": "JEPQ19",
+    "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+    "underlying": "JPMorgan Nasdaq Covered Call ETF",
+    "underlying_ticker": "JEPQ",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "High Dividend / Nasdaq Covered Call",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.หยวนต้า (19)",
+    "issuer_code": "19",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลสม่ำเสมอ (Monthly)",
+    "description": "Active ETF หุ้นนวัตกรรม Nasdaq ผสมกลยุทธ์ Covered Call เพื่อสร้างกระแสเงินสดเงินปันผลระดับสูง"
+  },
+  {
+    "symbol": "NVDA80X",
+    "name": "NVIDIA Corporation",
+    "underlying": "NVIDIA Corp. Common Stock",
+    "underlying_ticker": "NVDA",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "AI / Semiconductors",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ตามการประกาศของบริษัทแม่",
+    "description": "ผู้นำอันดับ 1 ของโลกด้าน GPU ชิปประมวลผลสำหรับ Data Center และปัญญาประดิษฐ์ (AI Infrastructure)"
+  },
+  {
+    "symbol": "NVDA01",
+    "name": "NVIDIA Corporation",
+    "underlying": "NVIDIA Corp. Common Stock",
+    "underlying_ticker": "NVDA",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "AI / Semiconductors",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น. และ Night Session",
+    "dividend": "ตามการประกาศของบริษัทแม่",
+    "description": "DR อ้างอิงหุ้น NVIDIA ซื้อขายในเวลาทำการของตลาดหลักทรัพย์แห่งประเทศไทย (SET)"
+  },
+  {
+    "symbol": "AAPL80X",
+    "name": "Apple Inc.",
+    "underlying": "Apple Inc. Common Stock",
+    "underlying_ticker": "AAPL",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Consumer Tech / Ecosystem",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "เจ้าของอุปกรณ์ iPhone, Mac, iPad และระบบนิเวศบริการ (Services) ที่มีผู้ใช้งานกว่า 2,000 ล้านเครื่องทั่วโลก"
+  },
+  {
+    "symbol": "AAPL01",
+    "name": "Apple Inc.",
+    "underlying": "Apple Inc. Common Stock",
+    "underlying_ticker": "AAPL",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Consumer Tech",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "DR อ้างอิงหุ้น Apple Inc. ออกโดย บล.บัวหลวง ซื้อขายในเวลาทำการไทย"
+  },
+  {
+    "symbol": "MSFT80X",
+    "name": "Microsoft Corporation",
+    "underlying": "Microsoft Corp. Common Stock",
+    "underlying_ticker": "MSFT",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Enterprise Cloud & AI",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้นำคลาวด์องค์กร Azure, ซอฟต์แวร์ Office 365, Windows, และผู้ถือหุ้นหลักใน OpenAI (ChatGPT Copilot)"
+  },
+  {
+    "symbol": "MSFT01",
+    "name": "Microsoft Corporation",
+    "underlying": "Microsoft Corp. Common Stock",
+    "underlying_ticker": "MSFT",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Enterprise Cloud & AI",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "DR อ้างอิงหุ้น Microsoft ในตลาดหุ้นไทย"
+  },
+  {
+    "symbol": "GOOG80X",
+    "name": "Alphabet Inc. (Class A)",
+    "underlying": "Alphabet Inc. Class A Stock",
+    "underlying_ticker": "GOOGL",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Search, Ads, Cloud & AI",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ตามการประกาศของบริษัท",
+    "description": "บริษัทแม่ของ Google Search, YouTube, Android, Google Cloud และโมเดล Gemini AI"
+  },
+  {
+    "symbol": "AMZN80X",
+    "name": "Amazon.com, Inc.",
+    "underlying": "Amazon.com Inc. Common Stock",
+    "underlying_ticker": "AMZN",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "E-Commerce & Cloud AWS",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล (เน้น Reinvest)",
+    "description": "ยักษ์ใหญ่อันดับ 1 ธุรกิจ E-Commerce สหรัฐฯ และผู้ให้บริการ Cloud Infrastructure อันดับ 1 ของโลก (AWS)"
+  },
+  {
+    "symbol": "META80X",
+    "name": "Meta Platforms, Inc.",
+    "underlying": "Meta Platforms Class A Common Stock",
+    "underlying_ticker": "META",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Social Media & Open-source AI",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "เจ้าของ Facebook, Instagram, WhatsApp, Messenger และผู้พัฒนา Llama AI Ecosystem"
+  },
+  {
+    "symbol": "TSLA80X",
+    "name": "Tesla, Inc.",
+    "underlying": "Tesla Inc. Common Stock",
+    "underlying_ticker": "TSLA",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "EV, Autonomous & Energy",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "ผู้นำยานยนต์ไฟฟ้า (EV), ระบบขับเคลื่อนอัตโนมัติ Full Self-Driving (FSD), แบตเตอรี่กักเก็บพลังงาน และหุ่นยนต์ Optimus"
+  },
+  {
+    "symbol": "TSLA01",
+    "name": "Tesla, Inc.",
+    "underlying": "Tesla Inc. Common Stock",
+    "underlying_ticker": "TSLA",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "EV & Clean Energy",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "USD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "DR อ้างอิงหุ้น Tesla ออกโดย บล.บัวหลวง ซื้อขายในเวลาทำการไทย"
+  },
+  {
+    "symbol": "NFLX80X",
+    "name": "Netflix, Inc.",
+    "underlying": "Netflix Inc. Common Stock",
+    "underlying_ticker": "NFLX",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Streaming Entertainment",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "เบอร์หนึ่งบริการสตรีมมิ่งความบันเทิงระดับโลกที่มีสมาชิกบอกรับรายเดือนกว่า 270 ล้านบัญชี"
+  },
+  {
+    "symbol": "AMD80X",
+    "name": "Advanced Micro Devices, Inc.",
+    "underlying": "AMD Common Stock",
+    "underlying_ticker": "AMD",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Semiconductors & AI Chips",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "ผู้ผลิตซีพียู Ryzen, EPYC Server และชิปเร่งความเร็ว AI ตระกูล Instinct MI300"
+  },
+  {
+    "symbol": "AVGO80X",
+    "name": "Broadcom Inc.",
+    "underlying": "Broadcom Inc. Common Stock",
+    "underlying_ticker": "AVGO",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Custom AI ASICs & Networking",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้นำชิปเครือข่ายสำหรับ Data Center และผู้พัฒนาชิป Custom AI ASIC ร่วมกับ Hyperscalers"
+  },
+  {
+    "symbol": "PLTR80X",
+    "name": "Palantir Technologies Inc.",
+    "underlying": "Palantir Technologies Class A Stock",
+    "underlying_ticker": "PLTR",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Enterprise & Defense AI Software",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "แพลตฟอร์มวิเคราะห์ข้อมูลขนาดใหญ่และ Artificial Intelligence Platform (AIP) สำหรับหน่วยงานรัฐบาลและองค์กรชั้นนำ"
+  },
+  {
+    "symbol": "CRWD80X",
+    "name": "CrowdStrike Holdings, Inc.",
+    "underlying": "CrowdStrike Class A Stock",
+    "underlying_ticker": "CRWD",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Cybersecurity & Cloud Protection",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "ผู้นำแพลตฟอร์ม Falcon ปกป้องความปลอดภัยทางไซเบอร์บนคลาวด์สำหรับองค์กรขนาดใหญ่"
+  },
+  {
+    "symbol": "TSM80X",
+    "name": "Taiwan Semiconductor Manufacturing Co.",
+    "underlying": "TSMC ADR",
+    "underlying_ticker": "TSM",
+    "country": "สหรัฐอเมริกา / ไต้หวัน",
+    "country_code": "TW",
+    "flag": "🇹🇼",
+    "market": "NYSE (ADR)",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Semiconductor Foundry",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "โรงงานรับจ้างผลิตเซมิคอนดักเตอร์อันดับ 1 ของโลก ครองส่วนแบ่งการผลิตชิปขั้นสูง (>90%) ให้กับ Apple, Nvidia, AMD, Qualcomm"
+  },
+  {
+    "symbol": "LLY80X",
+    "name": "Eli Lilly and Company",
+    "underlying": "Eli Lilly Common Stock",
+    "underlying_ticker": "LLY",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Pharmaceuticals & GLP-1",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "บริษัทยาชีวเวชภัณฑ์ที่มีมูลค่าสูงสุดในโลก ผู้นำยารักษาเบาหวานและยาลดน้ำหนักกลุ่ม GLP-1 (Mounjaro / Zepbound)"
+  },
+  {
+    "symbol": "BRKB80X",
+    "name": "Berkshire Hathaway Inc. (Class B)",
+    "underlying": "Berkshire Hathaway Class B Common Stock",
+    "underlying_ticker": "BRK.B",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Conglomerate & Value Investing",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล (เน้นสร้างมูลค่าทบต้น)",
+    "description": "กลุ่มบริษัทโฮลดิ้งของ Warren Buffett ถือครองธุรกิจประกัน GEICO รถไฟ BNSF และพอร์ตลงทุนมูลค่ามหาศาล"
+  },
+  {
+    "symbol": "WMT80X",
+    "name": "Walmart Inc.",
+    "underlying": "Walmart Inc. Common Stock",
+    "underlying_ticker": "WMT",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Retail & Consumer Staples",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend Aristocrat (>50 ปี)",
+    "description": "เครือข่ายค้าปลีกออฟไลน์และออนไลน์ที่ใหญ่ที่สุดในโลก มียอดขายกว่า 6 แสนล้านดอลลาร์ต่อปี"
+  },
+  {
+    "symbol": "COST80X",
+    "name": "Costco Wholesale Corporation",
+    "underlying": "Costco Wholesale Common Stock",
+    "underlying_ticker": "COST",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Membership Warehouse Club",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส + ปันผลพิเศษ",
+    "description": "ผู้นำค้าส่งระบบสมาชิกที่มีอัตราการต่ออายุสมาชิก (Renewal Rate) สูงกว่า 90% ทั่วโลก"
+  },
+  {
+    "symbol": "E1VFVN3001",
+    "name": "DCVFMVN30 ETF",
+    "underlying": "VN30 Index (Vietnam Top 30)",
+    "underlying_ticker": "E1VFVN30.VN",
+    "country": "เวียดนาม (VN)",
+    "country_code": "VN",
+    "flag": "🇻🇳",
+    "market": "HOSE (Ho Chi Minh City)",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Vietnam Blue-chip Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "VND",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "DR ตัวแรกของประเทศไทย อ้างอิงหุ้นชั้นนำ 30 ตัวแรกของตลาดหุ้นเวียดนาม เกาะกระแสการเติบโตทางเศรษฐกิจของเวียดนาม"
+  },
+  {
+    "symbol": "FUEVFVND01",
+    "name": "DCVFMVN DIAMOND ETF",
+    "underlying": "Vietnam Diamond Index (VN DIAMOND)",
+    "underlying_ticker": "FUEVFVND.VN",
+    "country": "เวียดนาม (VN)",
+    "country_code": "VN",
+    "flag": "🇻🇳",
+    "market": "HOSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Vietnam Foreign Room Full",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "VND",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "อ้างอิงหุ้นเวียดนามชั้นยอดที่ติดเพดานสัดส่วนนักลงทุนต่างชาติ (Foreign Ownership Limit - FOL) เช่น FPT, MWG, ACB, PNJ โดยไม่ต้องจ่ายค่าพรีเมียม"
+  },
+  {
+    "symbol": "E1VFVN3080",
+    "name": "DCVFMVN30 ETF",
+    "underlying": "VN30 Index",
+    "underlying_ticker": "E1VFVN30.VN",
+    "country": "เวียดนาม (VN)",
+    "country_code": "VN",
+    "flag": "🇻🇳",
+    "market": "HOSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Vietnam Blue-chip Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "VND",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "DR หุ้นเวียดนาม VN30 ออกโดยธนาคารกรุงไทย"
+  },
+  {
+    "symbol": "FUEVFVND80",
+    "name": "DCVFMVN DIAMOND ETF",
+    "underlying": "Vietnam Diamond Index",
+    "underlying_ticker": "FUEVFVND.VN",
+    "country": "เวียดนาม (VN)",
+    "country_code": "VN",
+    "flag": "🇻🇳",
+    "market": "HOSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Vietnam Foreign Room Full",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "VND",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "DR หุ้นเวียดนาม DIAMOND ออกโดยธนาคารกรุงไทย"
+  },
+  {
+    "symbol": "HK01",
+    "name": "Tracker Fund of Hong Kong",
+    "underlying": "Hang Seng Index (HSI)",
+    "underlying_ticker": "2800.HK",
+    "country": "ฮ่องกง (HK)",
+    "country_code": "HK",
+    "flag": "🇭🇰",
+    "market": "HKEX",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Hang Seng Blue-chip",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (ปีละ 2 ครั้ง)",
+    "description": "อ้างอิง ETF ดัชนี Hang Seng (TraHK) ซึ่งเป็นกองทุน ETF กองแรกและใหญ่ที่สุดของฮ่องกง รวมหุ้นยักษ์ใหญ่ของฮ่องกงและจีน"
+  },
+  {
+    "symbol": "CN01",
+    "name": "ChinaAMC CSI 300 Index ETF",
+    "underlying": "CSI 300 Index (China A-Shares)",
+    "underlying_ticker": "3188.HK",
+    "country": "จีน (CN)",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX / SSE / SZSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "China A-Shares 300",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD / RMB",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "อ้างอิงหุ้นจีน A-Shares ขนาดใหญ่ 300 ตัวในตลาดเซี่ยงไฮ้และเซินเจิ้น (เช่น Kweichow Moutai, CATL, Ping An)"
+  },
+  {
+    "symbol": "CNTECH01",
+    "name": "ChinaAMC Hang Seng TECH Index ETF",
+    "underlying": "Hang Seng TECH Index",
+    "underlying_ticker": "3088.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "HK",
+    "flag": "🇭🇰",
+    "market": "HKEX",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "China Tech Giants",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามกองแม่",
+    "description": "อ้างอิงดัชนี Hang Seng TECH รวม 30 หุ้นเทคโนโลยียักษ์ใหญ่ของจีนในตลาดฮ่องกง (Tencent, Alibaba, Meituan, Xiaomi, NetEase)"
+  },
+  {
+    "symbol": "STAR5001",
+    "name": "ChinaAMC SSE Science and Technology Innovation Board 50 ETF",
+    "underlying": "STAR 50 Index",
+    "underlying_ticker": "3151.HK",
+    "country": "จีน (CN)",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX / SSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Hard Tech / Semiconductors",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD / RMB",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "ตามการประกาศของกองแม่",
+    "description": "อ้างอิงดัชนีกระดานเทคโนโลยีขั้นสูง (STAR Market หรือ Nasdaq เมืองจีน) เน้นบริษัทเซมิคอนดักเตอร์และฮาร์ดแวร์ไฮเทค"
+  },
+  {
+    "symbol": "TENCENT80",
+    "name": "Tencent Holdings Limited",
+    "underlying": "Tencent Holdings Stock",
+    "underlying_ticker": "0700.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Gaming, Social (WeChat) & Fintech",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "บริษัทเทคโนโลยีมูลค่าสูงสุดของจีน เจ้าของ WeChat, เกมระดับโลก (Riot Games, Supercell) และพอร์ตการลงทุนในสตาร์ทอัพเทค"
+  },
+  {
+    "symbol": "TENCENT01",
+    "name": "Tencent Holdings Limited",
+    "underlying": "Tencent Holdings Stock",
+    "underlying_ticker": "0700.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Gaming & Super App",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "DR อ้างอิงหุ้น Tencent ออกโดย บล.บัวหลวง"
+  },
+  {
+    "symbol": "BABA80",
+    "name": "Alibaba Group Holding Limited",
+    "underlying": "Alibaba Group Ordinary Shares",
+    "underlying_ticker": "9988.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "E-Commerce & AliCloud",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามมติบริษัท",
+    "description": "ผู้นำอีคอมเมิร์ซจีน (Taobao, Tmall), คลาวด์คอมพิวติ้ง (Alibaba Cloud) และธุรกิจโลจิสติกส์ Cainiao"
+  },
+  {
+    "symbol": "BABA01",
+    "name": "Alibaba Group Holding Limited",
+    "underlying": "Alibaba Group Ordinary Shares",
+    "underlying_ticker": "9988.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "E-Commerce & Cloud",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามมติบริษัท",
+    "description": "DR อ้างอิงหุ้น Alibaba ออกโดย บล.บัวหลวง"
+  },
+  {
+    "symbol": "BYD80",
+    "name": "BYD Company Limited",
+    "underlying": "BYD Company H-Shares",
+    "underlying_ticker": "1211.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "EV & Blade Battery",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "ผู้ผลิตยานยนต์พลังงานใหม่ (NEV/EV) และแบตเตอรี่ใบมีด (Blade Battery) อันดับ 1 ของจีนและแนวหน้าของโลก"
+  },
+  {
+    "symbol": "BYD01",
+    "name": "BYD Company Limited",
+    "underlying": "BYD Company H-Shares",
+    "underlying_ticker": "1211.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "EV & Clean Energy",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "DR อ้างอิงหุ้น BYD ออกโดย บล.บัวหลวง"
+  },
+  {
+    "symbol": "XIAOMI80",
+    "name": "Xiaomi Corporation",
+    "underlying": "Xiaomi Corp. Class B Shares",
+    "underlying_ticker": "1810.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Smartphones, IoT & EV",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "ตามการประกาศของบริษัท",
+    "description": "ผู้ผลิตสมาร์ทโฟน อุปกรณ์สมาร์ทโฮม IoT และก้าวสู่ธุรกิจรถยนต์ไฟฟ้าอัจฉริยะ (Xiaomi SU7)"
+  },
+  {
+    "symbol": "MEITUAN01",
+    "name": "Meituan",
+    "underlying": "Meituan Class B Shares",
+    "underlying_ticker": "3690.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Food Delivery & Local Life Services",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "ตามการประกาศของบริษัท",
+    "description": "ซูเปอร์แอปด้านการจัดส่งอาหาร สั่งซื้อสินค้าอุปโภค และบริการจองโรงแรม/ท่องเที่ยวอันดับ 1 ของจีน"
+  },
+  {
+    "symbol": "CATL80",
+    "name": "Contemporary Amperex Technology Co., Limited",
+    "underlying": "CATL A-Shares",
+    "underlying_ticker": "300750.SZ",
+    "country": "จีน (CN)",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "SZSE (Shenzhen)",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "EV Batteries & Energy Storage",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "CNY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "ผู้ผลิตแบตเตอรี่รถยนต์ไฟฟ้า (EV) และระบบจัดเก็บพลังงาน (BESS) รายใหญ่ที่สุดในโลก ครองส่วนแบ่งตลาดโลกกว่า 36%"
+  },
+  {
+    "symbol": "ASML01",
+    "name": "ASML Holding N.V.",
+    "underlying": "ASML Holding Ordinary Shares",
+    "underlying_ticker": "ASML.AS",
+    "country": "เนเธอร์แลนด์ / ยุโรป (EU)",
+    "country_code": "NL",
+    "flag": "🇳🇱",
+    "market": "Euronext Amsterdam",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Extreme UV Lithography (EUV)",
+    "ratio": "1,000 : 1",
+    "ratio_num": 1000,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้ผูกขาดเครื่องพิมพ์ลายวงจรด้วยรังสีเอกซ์ตรีมยูวี (EUV Lithography) เพียงรายเดียวในโลก หัวใจสำคัญที่ขาดไม่ได้ในการผลิตชิป 2nm/3nm ของ TSMC, Intel, Samsung"
+  },
+  {
+    "symbol": "LVMH01",
+    "name": "LVMH Moët Hennessy Louis Vuitton",
+    "underlying": "LVMH Share",
+    "underlying_ticker": "MC.PA",
+    "country": "ฝรั่งเศส / ยุโรป (EU)",
+    "country_code": "FR",
+    "flag": "🇫🇷",
+    "market": "Euronext Paris",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Luxury Goods & Fashion",
+    "ratio": "1,000 : 1",
+    "ratio_num": 1000,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Interim + Final)",
+    "description": "อาณาจักรสินค้าหรูหราที่ใหญ่ที่สุดในโลก เจ้าของ Louis Vuitton, Dior, Tiffany & Co., Bulgari, Sephora, Moët & Chandon"
+  },
+  {
+    "symbol": "HERMES01",
+    "name": "Hermès International S.A.",
+    "underlying": "Hermès International Share",
+    "underlying_ticker": "RMS.PA",
+    "country": "ฝรั่งเศส / ยุโรป (EU)",
+    "country_code": "FR",
+    "flag": "🇫🇷",
+    "market": "Euronext Paris",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Ultra-Luxury Goods",
+    "ratio": "1,000 : 1",
+    "ratio_num": 1000,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลตามมติบริษัท",
+    "description": "แบรนด์หรูระดับตำนานเจ้าของกระเป๋า Birkin และ Kelly โดดเด่นด้วยอำนาจการกำหนดราคาสูงที่สุดในอุตสาหกรรม Luxury"
+  },
+  {
+    "symbol": "LOREAL01",
+    "name": "L'Oréal S.A.",
+    "underlying": "L'Oréal Share",
+    "underlying_ticker": "OR.PA",
+    "country": "ฝรั่งเศส / ยุโรป (EU)",
+    "country_code": "FR",
+    "flag": "🇫🇷",
+    "market": "Euronext Paris",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Beauty & Cosmetics",
+    "ratio": "1,000 : 1",
+    "ratio_num": 1000,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "บริษัทความงามและเครื่องสำอางเบอร์หนึ่งของโลก เจ้าของแบรนด์ Lancôme, Kiehl's, YSL Beauty, La Roche-Posay, Maybelline"
+  },
+  {
+    "symbol": "NOVO01",
+    "name": "Novo Nordisk A/S",
+    "underlying": "Novo Nordisk B Shares",
+    "underlying_ticker": "NOVO-B.CO",
+    "country": "เดนมาร์ก / ยุโรป (EU)",
+    "country_code": "DK",
+    "flag": "🇩🇰",
+    "market": "Nasdaq Copenhagen",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Biopharma & GLP-1 Obesity",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "DKK / EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผล (Interim + Final)",
+    "description": "บริษัทยาที่ใหญ่ที่สุดในยุโรป ผู้คิดค้นยาลดน้ำหนักและควบคุมโรคอ้วนยอดฮิตระดับโลก Ozempic และ Wegovy"
+  },
+  {
+    "symbol": "JAPAN13",
+    "name": "NEXT FUNDS TOPIX ETF",
+    "underlying": "TOPIX Index (Tokyo Stock Price Index)",
+    "underlying_ticker": "1306.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "Tokyo Stock Exchange (TSE)",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Japan Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.เคจีไอ (13)",
+    "issuer_code": "13",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "อ้างอิง ETF ดัชนี TOPIX ที่ครอบคลุมหุ้นขนาดใหญ่และกลางทั้งหมดในกระดานหลัก Prime Market ของตลาดหุ้นโตเกียว"
+  },
+  {
+    "symbol": "JAPAN19",
+    "name": "Daiwa ETF TOPIX",
+    "underlying": "TOPIX Index",
+    "underlying_ticker": "1305.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Broad Japan Index",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.หยวนต้า (19)",
+    "issuer_code": "19",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "DR หุ้นญี่ปุ่น TOPIX ออกโดย บล.หยวนต้า"
+  },
+  {
+    "symbol": "TOYOTA01",
+    "name": "Toyota Motor Corporation",
+    "underlying": "Toyota Motor Common Stock",
+    "underlying_ticker": "7203.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Automotive & Hybrid",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "ค่ายผู้ผลิตยานยนต์ที่มียอดขายอันดับ 1 ของโลก โดดเด่นด้วยเทคโนโลยียานยนต์ไฮบริด (HEV) และเครือข่ายจำหน่ายทั่วโลก"
+  },
+  {
+    "symbol": "SONY01",
+    "name": "Sony Group Corporation",
+    "underlying": "Sony Group Common Stock",
+    "underlying_ticker": "6758.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Gaming, Entertainment & Sensors",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "ผู้นำความบันเทิงระดับโลก (PlayStation, เพลง, ภาพยนตร์) และผู้ผลิตเซนเซอร์รับภาพ CMOS Image Sensors อันดับ 1 ของโลก"
+  },
+  {
+    "symbol": "HONDA01",
+    "name": "Honda Motor Co., Ltd.",
+    "underlying": "Honda Motor Common Stock",
+    "underlying_ticker": "7267.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Automotive & Motorcycles",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "ผู้ผลิตรถจักรยานยนต์อันดับ 1 ของโลก และผู้ผลิตรถยนต์ชั้นนำด้านเทคโนโลยีความปลอดภัย e:HEV"
+  },
+  {
+    "symbol": "SING19",
+    "name": "iShares MSCI Singapore ETF",
+    "underlying": "MSCI Singapore Index",
+    "underlying_ticker": "EWS",
+    "country": "สิงคโปร์ (SG)",
+    "country_code": "SG",
+    "flag": "🇸🇬",
+    "market": "NYSE Arca / SGX",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Singapore Blue-chips & Banks",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.หยวนต้า (19)",
+    "issuer_code": "19",
+    "type": "DR",
+    "currency": "USD / SGD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลสม่ำเสมอ (3-4% Yield)",
+    "description": "อ้างอิงหุ้นชั้นนำของสิงคโปร์ เน้นธนาคารพาณิชย์ยักษ์ใหญ่ (DBS, OCBC, UOB) และโทรคมนาคม Singtel"
+  },
+  {
+    "symbol": "TAIWAN13",
+    "name": "Yuanta/P-shares Taiwan Top 50 ETF",
+    "underlying": "FTSE TWSE Taiwan 50 Index",
+    "underlying_ticker": "0050.TW",
+    "country": "ไต้หวัน (TW)",
+    "country_code": "TW",
+    "flag": "🇹🇼",
+    "market": "TWSE (Taiwan)",
+    "asset_class": "ดัชนี / ETF",
+    "sector": "Taiwan Top 50 (TSMC Heavy)",
+    "ratio": "1 : 1",
+    "ratio_num": 1,
+    "issuer": "บล.เคจีไอ (13)",
+    "issuer_code": "13",
+    "type": "DR",
+    "currency": "TWD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "ETF หุ้นไต้หวัน 50 อันดับแรก โดยมีสัดส่วนหลักใน TSMC, MediaTek, Foxconn (Hon Hai) และ Delta Electronics"
+  },
+  {
+    "symbol": "INTC80X",
+    "name": "Intel Corporation",
+    "underlying": "Intel Corp. Common Stock",
+    "underlying_ticker": "INTC",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Semiconductors & Foundry",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้ผลิตซีพียู x86 สำหรับคอมพิวเตอร์และเซิร์ฟเวอร์ และกำลังรุกธุรกิจผลิตชิป Intel Foundry Services"
+  },
+  {
+    "symbol": "QCOM80X",
+    "name": "QUALCOMM Incorporated",
+    "underlying": "Qualcomm Common Stock",
+    "underlying_ticker": "QCOM",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Mobile Chips & On-Device AI",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้นำชิปเซ็ตประมวลผล Snapdragon บนสมาร์ทโฟน 5G และชิป AI PC ตระกูล Snapdragon X Elite"
+  },
+  {
+    "symbol": "ARM80X",
+    "name": "Arm Holdings plc",
+    "underlying": "Arm Holdings ADR",
+    "underlying_ticker": "ARM",
+    "country": "สหรัฐอเมริกา / สหราชอาณาจักร",
+    "country_code": "GB",
+    "flag": "🇬🇧",
+    "market": "NASDAQ (ADR)",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Processor Architecture IP",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "ผู้ออกแบบสถาปัตยกรรมชิป ARM ที่ใช้ในสมาร์ทโฟนกว่า 99% ของโลก และกำลังขยายตัวอย่างรวดเร็วใน Cloud Data Center"
+  },
+  {
+    "symbol": "SMCI80X",
+    "name": "Super Micro Computer, Inc.",
+    "underlying": "Super Micro Computer Stock",
+    "underlying_ticker": "SMCI",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "AI Server Infrastructure & Liquid Cooling",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "ผู้ผลิตเซิร์ฟเวอร์ AI ประสิทธิภาพสูงและระบบระบายความร้อนด้วยของเหลว (Direct Liquid Cooling) พาร์ทเนอร์หลักของ Nvidia"
+  },
+  {
+    "symbol": "JNJ80X",
+    "name": "Johnson & Johnson",
+    "underlying": "Johnson & Johnson Common Stock",
+    "underlying_ticker": "JNJ",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Healthcare & Medical Devices",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend King (>60 ปี)",
+    "description": "บริษัทเฮลธ์แคร์ระดับโลก ผู้นำด้านเวชภัณฑ์ยาและเครื่องมือแพทย์ (Medical MedTech)"
+  },
+  {
+    "symbol": "PG80X",
+    "name": "The Procter & Gamble Company",
+    "underlying": "Procter & Gamble Common Stock",
+    "underlying_ticker": "PG",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Consumer Staples",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend King (>60 ปี)",
+    "description": "ยักษ์ใหญ่สินค้าอุปโภคบริโภคระดับโลก เจ้าของแบรนด์ Gillette, Pantene, Head & Shoulders, Oral-B, Pampers"
+  },
+  {
+    "symbol": "KO80X",
+    "name": "The Coca-Cola Company",
+    "underlying": "Coca-Cola Common Stock",
+    "underlying_ticker": "KO",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Beverages & Consumer Staples",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend King (>60 ปี)",
+    "description": "แบรนด์เครื่องดื่มไม่มีแอลกอฮอล์ที่แข็งแกร่งที่สุดในโลก หุ้นโปรดถือยาวของ Warren Buffett"
+  },
+  {
+    "symbol": "PEP80X",
+    "name": "PepsiCo, Inc.",
+    "underlying": "PepsiCo Common Stock",
+    "underlying_ticker": "PEP",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Snacks & Beverages",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend King (>50 ปี)",
+    "description": "ผู้นำขนมขบเคี้ยวและเครื่องดื่มระดับโลก เจ้าของ Lay's, Doritos, Cheetos, Pepsi, Gatorade"
+  },
+  {
+    "symbol": "MCD80X",
+    "name": "McDonald's Corporation",
+    "underlying": "McDonald's Common Stock",
+    "underlying_ticker": "MCD",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Quick-Service Restaurants",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "Dividend Aristocrat (>45 ปี)",
+    "description": "เครือข่ายร้านอาหารบริการด่วน (QSR) ที่มีสาขากว่า 40,000 แห่งในกว่า 100 ประเทศทั่วโลก"
+  },
+  {
+    "symbol": "SBUX80X",
+    "name": "Starbucks Corporation",
+    "underlying": "Starbucks Common Stock",
+    "underlying_ticker": "SBUX",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Specialty Coffee Retail",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "แบรนด์ร้านกาแฟระดับพรีเมียมอันดับ 1 ของโลก มีสาขากว่า 38,000 สาขาทั่วโลก"
+  },
+  {
+    "symbol": "NKE80X",
+    "name": "NIKE, Inc.",
+    "underlying": "NIKE Class B Common Stock",
+    "underlying_ticker": "NKE",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Athletic Footwear & Apparel",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "แบรนด์รองเท้าและเสื้อผ้ากีฬาระดับโลก สัญลักษณ์ Swoosh และแบรนด์ Jordan"
+  },
+  {
+    "symbol": "DIS80X",
+    "name": "The Walt Disney Company",
+    "underlying": "Disney Common Stock",
+    "underlying_ticker": "DIS",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Entertainment, Parks & Disney+",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "อาณาจักรความบันเทิงระดับโลก เจ้าของสวนสนุก Disneyland, Marvel, Star Wars, Pixar, Disney+"
+  },
+  {
+    "symbol": "V80X",
+    "name": "Visa Inc.",
+    "underlying": "Visa Class A Common Stock",
+    "underlying_ticker": "V",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Payment Network & Fintech",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "เครือข่ายการชำระเงินดิจิทัลที่ใหญ่ที่สุดในโลก ประมวลผลธุรกรรมทางการเงินกว่า 2.5 แสนล้านรายการต่อปี"
+  },
+  {
+    "symbol": "MA80X",
+    "name": "Mastercard Incorporated",
+    "underlying": "Mastercard Class A Common Stock",
+    "underlying_ticker": "MA",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Global Payment Processing",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "เครือข่ายรับชำระเงินระดับโลก คู่แข่งสำคัญของ Visa มีมาร์จิ้นกำไรจากการดำเนินงานสูงกว่า 55%"
+  },
+  {
+    "symbol": "JPM80X",
+    "name": "JPMorgan Chase & Co.",
+    "underlying": "JPMorgan Chase Common Stock",
+    "underlying_ticker": "JPM",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Global Investment Banking",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ธนาคารพาณิชย์และวาณิชธนกิจที่ใหญ่ที่สุดในสหรัฐอเมริกา มียอดสินทรัพย์กว่า 4 ล้านล้านดอลลาร์"
+  },
+  {
+    "symbol": "BKNG80X",
+    "name": "Booking Holdings Inc.",
+    "underlying": "Booking Holdings Common Stock",
+    "underlying_ticker": "BKNG",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NASDAQ",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Online Travel Agency (OTA)",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "จ่ายเงินปันผลรายไตรมาส",
+    "description": "ผู้ให้บริการแพลตฟอร์มท่องเที่ยวออนไลน์อันดับ 1 เจ้าของ Booking.com, Agoda, Priceline, Kayak"
+  },
+  {
+    "symbol": "UBER80X",
+    "name": "Uber Technologies, Inc.",
+    "underlying": "Uber Common Stock",
+    "underlying_ticker": "UBER",
+    "country": "สหรัฐอเมริกา (US)",
+    "country_code": "US",
+    "flag": "🇺🇸",
+    "market": "NYSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Mobility & Delivery Platform",
+    "ratio": "1 : 1 (Fractional)",
+    "ratio_num": 1,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DRx",
+    "currency": "USD",
+    "trading_hours": "20:00 - 04:00 น. (เวลาสหรัฐฯ)",
+    "dividend": "ไม่มีนโยบายจ่ายปันผล",
+    "description": "แพลตฟอร์มเรียกรถโดยสาร (Mobility) และส่งอาหาร (Uber Eats) ที่ใหญ่ที่สุดในกลุ่มประเทศตะวันตก"
+  },
+  {
+    "symbol": "BIDU80",
+    "name": "Baidu, Inc.",
+    "underlying": "Baidu Class A Ordinary Shares",
+    "underlying_ticker": "9888.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Search Engine & Ernie AI",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "ตามการประกาศของบริษัท",
+    "description": "เสิร์ชเอนจินอันดับ 1 ของจีน ผู้บุกเบิกเทคโนโลยีปัญญาประดิษฐ์ Ernie Bot และรถแท็กซี่ไร้คนขับ Apollo Go"
+  },
+  {
+    "symbol": "PINGAN80",
+    "name": "Ping An Insurance (Group) Co. of China",
+    "underlying": "Ping An Insurance H-Shares",
+    "underlying_ticker": "2318.HK",
+    "country": "ฮ่องกง / จีน",
+    "country_code": "CN",
+    "flag": "🇨🇳",
+    "market": "HKEX",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Insurance & Fintech",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "ธนาคารกรุงไทย (80)",
+    "issuer_code": "80",
+    "type": "DR",
+    "currency": "HKD",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลสูง (>5-6% Yield)",
+    "description": "กลุ่มธุรกิจประกันชีวิตและประกันวินาศภัยที่ใหญ่ที่สุดในเอเชีย ผสานการนำเทคโนโลยี AI และ Big Data มาบริหารความเสี่ยง"
+  },
+  {
+    "symbol": "FASTRET01",
+    "name": "Fast Retailing Co., Ltd.",
+    "underlying": "Fast Retailing Common Stock",
+    "underlying_ticker": "9983.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Apparel & Fast Fashion (UNIQLO)",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "บริษัทแม่ของ UNIQLO และ GU ค้าปลีกเสื้อผ้าฟาสต์แฟชั่นที่เติบโตสูงทั้งในเอเชีย สหรัฐฯ และยุโรป"
+  },
+  {
+    "symbol": "NINTEN01",
+    "name": "Nintendo Co., Ltd.",
+    "underlying": "Nintendo Common Stock",
+    "underlying_ticker": "7974.T",
+    "country": "ญี่ปุ่น (JP)",
+    "country_code": "JP",
+    "flag": "🇯🇵",
+    "market": "TSE",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Gaming & Entertainment IP",
+    "ratio": "10 : 1",
+    "ratio_num": 10,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "JPY",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลปีละ 2 ครั้ง",
+    "description": "ยักษ์ใหญ่อุตสาหกรรมเกมคอนโซล เจ้าของเครื่องเล่น Nintendo Switch และ IP คาแรคเตอร์ยอดฮิตอย่าง Mario, Zelda, Pokémon"
+  },
+  {
+    "symbol": "SAP01",
+    "name": "SAP SE",
+    "underlying": "SAP Ordinary Shares",
+    "underlying_ticker": "SAP.DE",
+    "country": "เยอรมนี / ยุโรป (EU)",
+    "country_code": "DE",
+    "flag": "🇩🇪",
+    "market": "XETRA (Frankfurt)",
+    "asset_class": "หุ้นรายตัว",
+    "sector": "Enterprise ERP & Cloud Software",
+    "ratio": "100 : 1",
+    "ratio_num": 100,
+    "issuer": "บล.บัวหลวง (01)",
+    "issuer_code": "01",
+    "type": "DR",
+    "currency": "EUR",
+    "trading_hours": "10:00 - 16:30 น.",
+    "dividend": "จ่ายเงินปันผลประจำปี",
+    "description": "บริษัทเทคโนโลยีซอฟต์แวร์ที่ใหญ่ที่สุดในยุโรป ผู้นำระบบบริหารจัดการทรัพยากรองค์กร (ERP) และ Business AI"
+  }
+];
+// ==================== DR & DRx PORTAL ENGINE ====================
+let filteredDRs = [...ALL_DRS];
+let currentMainTab = 'funds'; // 'funds' | 'dr'
+
+let drFilters = {
+  search: '',
+  country: '',
+  type: '',
+  assetClass: '',
+  issuer: ''
+};
+
+let drSortKey = 'symbol';
+let drSortDir = 1; // 1 = asc, -1 = desc
+
+// Switch between Funds and DR tabs
+function switchMainTab(tab) {
+  currentMainTab = tab;
+  const fundsApp = document.getElementById('app');
+  const drView = document.getElementById('dr-view');
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const statsFunds = document.getElementById('stats-funds');
+  const statsDR = document.getElementById('stats-dr');
+  
+  const tabBtnFunds = document.getElementById('tab-btn-funds');
+  const tabBtnDR = document.getElementById('tab-btn-dr');
+
+  if (tab === 'dr') {
+    if (fundsApp) fundsApp.style.display = 'none';
+    if (drView) drView.style.display = 'flex';
+    if (sidebarToggle) sidebarToggle.style.display = 'none';
+    if (statsFunds) statsFunds.style.display = 'none';
+    if (statsDR) statsDR.style.display = 'flex';
+
+    if (tabBtnFunds) tabBtnFunds.classList.remove('active');
+    if (tabBtnDR) tabBtnDR.classList.add('active');
+
+    renderDRTable();
+  } else {
+    if (fundsApp) fundsApp.style.display = 'grid';
+    if (drView) drView.style.display = 'none';
+    if (sidebarToggle) sidebarToggle.style.display = 'flex';
+    if (statsFunds) statsFunds.style.display = 'flex';
+    if (statsDR) statsDR.style.display = 'none';
+
+    if (tabBtnFunds) tabBtnFunds.classList.add('active');
+    if (tabBtnDR) tabBtnDR.classList.remove('active');
+  }
+}
+
+// Filter DRs
+function onDRFilterChange() {
+  const searchInput = document.getElementById('dr-search-input');
+  drFilters.search = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  applyDRFiltering();
+}
+
+function setDRCountryFilter(val, el) {
+  drFilters.country = val;
+  updatePillGroup(el);
+  applyDRFiltering();
+}
+
+function setDRTypeFilter(val, el) {
+  drFilters.type = val;
+  updatePillGroup(el);
+  applyDRFiltering();
+}
+
+function setDRClassFilter(val, el) {
+  drFilters.assetClass = val;
+  updatePillGroup(el);
+  applyDRFiltering();
+}
+
+function setDRIssuerFilter(val, el) {
+  drFilters.issuer = val;
+  updatePillGroup(el);
+  applyDRFiltering();
+}
+
+function updatePillGroup(clickedEl) {
+  if (!clickedEl || !clickedEl.parentElement) return;
+  const siblings = clickedEl.parentElement.querySelectorAll('.dr-pill');
+  siblings.forEach(p => p.classList.remove('active'));
+  clickedEl.classList.add('active');
+}
+
+function applyDRPreset(preset) {
+  const searchInput = document.getElementById('dr-search-input');
+  if (searchInput) searchInput.value = '';
+  drFilters.search = '';
+
+  // Reset pills
+  document.querySelectorAll('.dr-filter-rows .dr-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.dr-filter-rows [data-dr-country=""]')?.classList.add('active');
+  document.querySelector('.dr-filter-rows [data-dr-type=""]')?.classList.add('active');
+  document.querySelector('.dr-filter-rows [data-dr-class=""]')?.classList.add('active');
+  document.querySelector('.dr-filter-rows [data-dr-issuer=""]')?.classList.add('active');
+  
+  drFilters.country = '';
+  drFilters.type = '';
+  drFilters.assetClass = '';
+  drFilters.issuer = '';
+
+  if (preset === 'us-tech') {
+    drFilters.country = 'US';
+    drFilters.assetClass = 'stock';
+    document.querySelector('.dr-filter-rows [data-dr-country="US"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-country=""]')?.classList.remove('active');
+  } else if (preset === 'indices') {
+    drFilters.assetClass = 'etf';
+    document.querySelector('.dr-filter-rows [data-dr-class="etf"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-class=""]')?.classList.remove('active');
+  } else if (preset === 'vietnam') {
+    drFilters.country = 'VN';
+    document.querySelector('.dr-filter-rows [data-dr-country="VN"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-country=""]')?.classList.remove('active');
+  } else if (preset === 'china') {
+    drFilters.country = 'CN_HK';
+    document.querySelector('.dr-filter-rows [data-dr-country="CN_HK"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-country=""]')?.classList.remove('active');
+  } else if (preset === 'luxury') {
+    drFilters.country = 'EU';
+    document.querySelector('.dr-filter-rows [data-dr-country="EU"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-country=""]')?.classList.remove('active');
+  } else if (preset === 'drx') {
+    drFilters.type = 'DRx';
+    document.querySelector('.dr-filter-rows [data-dr-type="DRx"]')?.classList.add('active');
+    document.querySelector('.dr-filter-rows [data-dr-type=""]')?.classList.remove('active');
+  }
+
+  applyDRFiltering();
+}
+
+function applyDRFiltering() {
+  filteredDRs = ALL_DRS.filter(d => {
+    // Search
+    if (drFilters.search) {
+      const q = drFilters.search;
+      const match = d.symbol.toLowerCase().includes(q) ||
+                    d.name.toLowerCase().includes(q) ||
+                    d.underlying.toLowerCase().includes(q) ||
+                    d.underlying_ticker.toLowerCase().includes(q) ||
+                    d.sector.toLowerCase().includes(q) ||
+                    d.country.toLowerCase().includes(q) ||
+                    d.issuer.toLowerCase().includes(q);
+      if (!match) return false;
+    }
+
+    // Country
+    if (drFilters.country) {
+      if (drFilters.country === 'US' && d.country_code !== 'US') return false;
+      if (drFilters.country === 'CN_HK' && !['CN', 'HK'].includes(d.country_code)) return false;
+      if (drFilters.country === 'VN' && d.country_code !== 'VN') return false;
+      if (drFilters.country === 'JP' && d.country_code !== 'JP') return false;
+      if (drFilters.country === 'EU' && !['NL', 'FR', 'DE', 'DK'].includes(d.country_code)) return false;
+      if (drFilters.country === 'OTHER' && ['US', 'CN', 'HK', 'VN', 'JP', 'NL', 'FR', 'DE', 'DK'].includes(d.country_code)) return false;
+    }
+
+    // Type
+    if (drFilters.type && d.type !== drFilters.type) return false;
+
+    // Asset Class
+    if (drFilters.assetClass) {
+      if (drFilters.assetClass === 'stock' && d.asset_class !== 'หุ้นรายตัว') return false;
+      if (drFilters.assetClass === 'etf' && d.asset_class !== 'ดัชนี / ETF') return false;
+    }
+
+    // Issuer
+    if (drFilters.issuer && d.issuer_code !== drFilters.issuer) return false;
+
+    return true;
+  });
+
+  // Sort
+  sortDRData();
+  renderDRTable();
+}
+
+function sortDRTable(key) {
+  if (drSortKey === key) {
+    drSortDir = -drSortDir;
+  } else {
+    drSortKey = key;
+    drSortDir = 1;
+  }
+  sortDRData();
+  renderDRTable();
+}
+
+function sortDRData() {
+  filteredDRs.sort((a, b) => {
+    let va = a[drSortKey];
+    let vb = b[drSortKey];
+    if (typeof va === 'string') va = va.toLowerCase();
+    if (typeof vb === 'string') vb = vb.toLowerCase();
+    if (va < vb) return -drSortDir;
+    if (va > vb) return drSortDir;
+    return 0;
+  });
+}
+
+function renderDRTable() {
+  const tbody = document.getElementById('dr-table-body');
+  const footerCount = document.getElementById('dr-shown-footer-count');
+  const shownDRCount = document.getElementById('shown-dr-count');
+  const totalDRCount = document.getElementById('total-dr-count');
+  
+  if (totalDRCount) totalDRCount.textContent = ALL_DRS.length;
+  if (shownDRCount) shownDRCount.textContent = filteredDRs.length;
+  if (footerCount) footerCount.textContent = filteredDRs.length;
+
+  if (!tbody) return;
+
+  if (filteredDRs.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:36px;color:var(--text3);">ไม่พบข้อมูล DR / DRx ตามเงื่อนไขที่เลือก กรุณาลองเปลี่ยนคำค้นหาหรือตัวกรอง</td></tr>';
+    return;
+  }
+
+  let html = '';
+  for (const d of filteredDRs) {
+    const typeClass = d.type.toLowerCase() === 'drx' ? 'drx' : 'dr';
+    html += `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <span class="dr-symbol-link" onclick="openDRCalcModal('${d.symbol}')">${d.symbol}</span>
+            <span class="dr-type-badge ${typeClass}">${d.type}</span>
+          </div>
+        </td>
+        <td>
+          <div style="font-weight:600;color:var(--text);">${d.name}</div>
+          <div style="font-size:11px;color:var(--text3);">${d.underlying} <span style="font-family:monospace;color:var(--accent2);">${d.underlying_ticker}</span></div>
+        </td>
+        <td>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="font-size:15px;">${d.flag}</span>
+            <span>${d.country}</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--text3);">${d.market}</div>
+        </td>
+        <td>
+          <span style="font-size:11.5px;color:var(--text2);">${d.asset_class}</span>
+        </td>
+        <td>
+          <div style="font-size:11.5px;font-weight:500;">${d.sector}</div>
+        </td>
+        <td>
+          <span class="dr-ratio-badge">${d.ratio}</span>
+        </td>
+        <td>
+          <div style="font-size:11.5px;">${d.issuer}</div>
+        </td>
+        <td>
+          <div style="font-size:11px;color:var(--text2);">${d.trading_hours}</div>
+        </td>
+        <td>
+          <div style="font-size:11.5px;font-family:monospace;font-weight:600;">${d.currency}</div>
+        </td>
+        <td style="text-align:center;">
+          <button class="dr-action-btn" style="padding:4px 9px;font-size:11px;" onclick="openDRCalcModal('${d.symbol}')">
+            🧮 คำนวณ
+          </button>
+        </td>
+      </tr>
+    `;
+  }
+  tbody.innerHTML = html;
+}
+
+// --- DR CALCULATOR LOGIC ---
+function openDRCalcModal(defaultSymbol) {
+  const modal = document.getElementById('dr-calc-modal');
+  const select = document.getElementById('calc-dr-select');
+  if (!modal || !select) return;
+
+  // Populate select
+  select.innerHTML = ALL_DRS.map(d => `<option value="${d.symbol}">${d.symbol} — ${d.name} (${d.ratio})</option>`).join('');
+
+  if (defaultSymbol) {
+    select.value = defaultSymbol;
+  }
+  
+  onCalcSelectChange();
+  modal.classList.add('open');
+}
+
+function closeDRCalcModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  const modal = document.getElementById('dr-calc-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function onCalcSelectChange() {
+  const select = document.getElementById('calc-dr-select');
+  const sym = select ? select.value : '';
+  const item = ALL_DRS.find(d => d.symbol === sym) || ALL_DRS[0];
+  if (!item) return;
+
+  const ratioInput = document.getElementById('calc-ratio-input');
+  const currLabel = document.getElementById('calc-curr-label');
+  const fxInput = document.getElementById('calc-fx-rate');
+  const foreignPriceInput = document.getElementById('calc-foreign-price');
+
+  if (ratioInput) ratioInput.value = item.ratio_num;
+  if (currLabel) currLabel.textContent = item.currency.split('/')[0].trim();
+
+  // Smart default FX rates
+  const cur = item.currency.toUpperCase();
+  if (fxInput) {
+    if (cur.includes('USD')) fxInput.value = '34.50';
+    else if (cur.includes('HKD')) fxInput.value = '4.45';
+    else if (cur.includes('EUR')) fxInput.value = '37.50';
+    else if (cur.includes('JPY')) fxInput.value = '0.23';
+    else if (cur.includes('VND')) fxInput.value = '0.00138';
+    else if (cur.includes('TWD')) fxInput.value = '1.08';
+    else if (cur.includes('SGD')) fxInput.value = '26.20';
+  }
+
+  // Smart default foreign price
+  if (foreignPriceInput) {
+    if (item.symbol === 'NVDA80X' || item.symbol === 'NVDA01') foreignPriceInput.value = '140';
+    else if (item.symbol === 'AAPL80X' || item.symbol === 'AAPL01') foreignPriceInput.value = '230';
+    else if (item.symbol === 'MSFT80X' || item.symbol === 'MSFT01') foreignPriceInput.value = '420';
+    else if (item.symbol === 'NDX01' || item.symbol === 'QQQ80') foreignPriceInput.value = '490';
+    else if (item.symbol === 'SP50001' || item.symbol === 'SPY80') foreignPriceInput.value = '580';
+    else if (item.symbol === 'E1VFVN3001' || item.symbol === 'E1VFVN3080') foreignPriceInput.value = '27500';
+    else if (item.symbol === 'FUEVFVND01' || item.symbol === 'FUEVFVND80') foreignPriceInput.value = '31000';
+    else if (item.symbol === 'ASML01') foreignPriceInput.value = '680';
+    else if (item.symbol === 'LVMH01') foreignPriceInput.value = '620';
+    else if (item.symbol === 'TENCENT80' || item.symbol === 'TENCENT01') foreignPriceInput.value = '420';
+    else if (item.symbol === 'BABA80' || item.symbol === 'BABA01') foreignPriceInput.value = '98';
+    else foreignPriceInput.value = '100';
+  }
+
+  runDRCalculation();
+}
+
+function runDRCalculation() {
+  const foreignPrice = parseFloat(document.getElementById('calc-foreign-price')?.value) || 0;
+  const fxRate = parseFloat(document.getElementById('calc-fx-rate')?.value) || 0;
+  const ratio = parseFloat(document.getElementById('calc-ratio-input')?.value) || 1;
+  const select = document.getElementById('calc-dr-select');
+  const sym = select ? select.value : '';
+  const item = ALL_DRS.find(d => d.symbol === sym);
+  const cur = item ? item.currency.split('/')[0].trim() : 'USD';
+
+  const fairPrice = (foreignPrice * fxRate) / ratio;
+
+  const fairPriceEl = document.getElementById('calc-fair-price');
+  const formulaEl = document.getElementById('calc-formula-display');
+
+  if (fairPriceEl) {
+    fairPriceEl.textContent = fairPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 3 });
+  }
+  if (formulaEl) {
+    formulaEl.textContent = '(' + foreignPrice.toLocaleString() + ' ' + cur + ' × ' + fxRate + ' THB) ÷ ' + ratio.toLocaleString() + ' = ' + fairPrice.toFixed(3) + ' บาท / DR';
+  }
+}
+
+// --- DR GUIDE MODAL ---
+function openDRGuideModal() {
+  const modal = document.getElementById('dr-guide-modal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeDRGuideModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  const modal = document.getElementById('dr-guide-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+// --- EXPORT DR CSV ---
+function exportDRCSV() {
+  const headers = ['Symbol', 'Name', 'Underlying', 'Underlying_Ticker', 'Country', 'Market', 'Type', 'Sector', 'Conversion_Ratio', 'Issuer', 'Trading_Hours', 'Currency', 'Dividend', 'Description'];
+  const rows = filteredDRs.map(d => [
+    d.symbol,
+    '"' + d.name.replace(/"/g, '""') + '"',
+    '"' + d.underlying.replace(/"/g, '""') + '"',
+    d.underlying_ticker,
+    '"' + d.country + '"',
+    '"' + d.market + '"',
+    d.type,
+    '"' + d.sector + '"',
+    '"' + d.ratio + '"',
+    '"' + d.issuer + '"',
+    '"' + d.trading_hours + '"',
+    d.currency,
+    '"' + d.dividend + '"',
+    '"' + d.description.replace(/"/g, '""') + '"'
+  ]);
+
+  const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute('download', 'SET_DR_DRx_List_' + (new Date().toISOString().slice(0,10)) + '.csv');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 
 </script>
 
